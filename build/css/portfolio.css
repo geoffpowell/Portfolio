@@ -1,0 +1,63 @@
+/*****************************************
+PORTFOLIO STYLES
+*****************************************/
+.project {
+  position: relative;
+}
+.project .paper {
+  background: white;
+  position: relative;
+  height: 100%;
+  z-index: 2;
+  padding-top: 6%;
+  box-sizing: border-box;
+}
+.project .project-info {
+  position: absolute;
+  width: 40.90909091%;
+  left: 6.81818182%;
+  height: 76%;
+}
+.project .project-info h1 {
+  font-family: 'Playfair Display', Arial, sans-serif;
+  white-space: nowrap;
+  margin-bottom: 24px;
+}
+.project .project-image {
+  position: absolute;
+  top: 18%;
+  right: 6.81818182%;
+  width: 40.90909091%;
+}
+.project .project-image img {
+  width: 100%;
+  height: auto;
+}
+.project .skills-used {
+  border-top: 1px solid #007f74;
+  border-bottom: 1px solid #007f74;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 48px;
+}
+.project .skills-used span {
+  font-size: 14px;
+  color: #007f74;
+}
+.project .btn {
+  margin-bottom: 16px;
+}
+.project .project-description p {
+  padding-left: 13.63636364%;
+}
+.project .portfolio-piece-counter {
+  display: none;
+  color: #004c46;
+  font-family: 'Montserrat', 'Gill Sans', Arial, sans-serif;
+  font-size: 21px;
+  position: absolute;
+  bottom: 0;
+  right: -24px;
+}
+/*ids for each of the portfolio pieces*/
+/*not shown in mobile sizes*/

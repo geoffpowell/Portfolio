@@ -1,0 +1,233 @@
+/*******************************
+PORTFOLIO PIECE PAGE STYLES
+********************************/
+
+//This stuff was for the navigation that I decided not to use.
+// .nav-back-container, .nav-forward-container {
+// 	width: 94px;
+// 	background-color: rgba(0, 0, 0, .2);
+// 	height: 264px;
+// 	position: relative;
+// 	float: left;
+// 	transition-duration: .3s;
+// }
+// .nav-forward-container {
+// 	float: right;
+// }
+// .shadow {
+// 	background-color: rgba(0, 0, 0, .4);
+// }
+
+/*these classes and their psuedo-classes work to create transparent triangles
+for navigating the portfolio pages*/
+.nav-back-triangle {
+	cursor: pointer;
+	position: absolute;
+	top: 110px;
+	left: 40px;
+	opacity: .8;
+  width: 32px;
+  height: 32px;
+  transform: rotate(-45deg);
+  border-left: 1px solid #f4f4f4;
+  border-top: 1px solid #f4f4f4;
+  overflow: hidden;
+  &:after {
+		content: '';
+		display: block;
+		background-color: transparent;
+		position: relative;
+		bottom: 19px;
+		right: 14px;
+		width: 32px;
+		height: 45px;
+		border: 1px solid #f4f4f4;
+		transform: rotate(45deg);
+		transition-duration: .3s;
+	}
+	&:hover:after {
+		background-color: #f4f4f4;
+	}
+}
+
+.nav-forward-triangle {
+	cursor: pointer;
+	position: absolute;
+	top: 110px;
+	left: 22px;
+	opacity: .8;
+  width: 32px;
+  height: 32px;
+  transform: rotate(135deg);
+  border-left: 1px solid #f4f4f4;
+  border-top: 1px solid #f4f4f4;
+  overflow: hidden;
+  &:after {
+		content: '';
+		display: block;
+		background-color: transparent;
+		position: relative;
+		bottom: 19px;
+		right: 14px;
+		width: 32px;
+		height: 45px;
+		border: 1px solid #f4f4f4;
+		transform: rotate(45deg);
+		transition-duration: .3s;
+	}
+	&:hover:after {
+		background-color: #f4f4f4;
+	}
+}
+	
+.footer-portfolio-nav-wrap {
+	width: 100%;
+	background: rgba(0,0,0,.2);
+	padding: 24px 0;
+	position: relative;
+	text-align: center;
+	margin-bottom: 33px;
+	.nav-forward-triangle.base, .nav-back-triangle.base {
+		position: static;
+		display: inline-block;
+	}
+	.nav-forward-triangle.base {
+		margin-left: 0px;
+	}
+	span {
+		position: relative;
+		bottom: 12px;
+		// margin-right: 12px;
+	}
+	span:nth-of-type(2) {
+		margin-left: 90px; 
+	}
+}
+
+.portfolio_piece_description {
+	margin-bottom: 30px;
+	h1 {
+		/*font size currently 48*/
+		line-height: 1.6em;
+		margin-bottom: 23px;
+	}
+
+	p.project-specs {
+		border: 1px solid grey;
+		padding: 1.2em;
+		//gives a little extra space between the project 
+		//overview and the section with images
+		margin-bottom: 33px;
+		overflow: visible;
+		z-index: 200;
+		bottom: 1.3em;
+		position: relative;
+	}
+	div .btn-action {
+		margin-left: 0;
+		padding-left: 12px;
+		position: relative;
+		bottom: 17px;
+		&:after {
+			background-image: url('../img/link-out-arrow.png');
+			background-size: 20px 19px;
+			background-repeat: no-repeat;
+			content: '';
+			width: 24px;
+			height: 25px;
+			display: inline-block;
+			position: relative;
+			top: 8px;
+			margin-left: 6px;
+		}
+	}
+	span {
+			font-weight: 600;
+			color: #6DB3A8;
+		}
+}
+
+/********************************************
+Responsive layout adjustments - Portfolio piece page specific
+********************************************/
+@media all and (min-width:768px) {
+	.portfolio_piece_description {
+		h1 {
+			display: inline-block;
+			line-height: 1.8em;
+			margin-bottom: 23px;
+		}
+		div .btn-action {
+			margin-left: 33px;
+			position: relative;
+			bottom: 3px;
+		}
+	}
+}
+
+/****************
+IMAGE GRID 
+small screens
+****************/
+.img-row {
+	overflow: hidden;
+	clear: both;
+	&.gray-bg {
+		background-color: #454545;
+	}
+	&:last-child {
+		margin-bottom: 90px;
+	}
+	img {
+		display: block;
+		width: 100%;
+	}
+	.text {
+	  padding: 40px 0 40px 40px;
+	  p span { 
+	 	  font-size: 1.5em;
+	 	  font-weight: 600;
+	 	  color: #6DB3A8;
+	  }
+		li {
+			margin-left: 12px;
+			list-style: disc;
+			list-style-position: inside;
+			line-height: 1.6em;
+		}
+	}
+}
+
+.col-split, .col-golden-large, .col-golden-small, .col-golden-third {
+	display: block;
+	width: 100%;
+}
+
+@media all and (min-width: 768px){
+
+	.col-split { /*images can be any height, standard for full screen is 610px*/
+		width: 50%;
+		float: left;
+	}
+	.col-golden-large {
+		width: 61.80%;
+		float: left;
+	}
+	.col-golden-small {
+		width: 38.20%; /*the images to use in this column here will stack with a perfect ratio of 2/1*/
+		float: left;
+	}
+	.col-golden-third {
+		width: 33.33%;
+		float: left;
+	}
+
+	.center {
+		float: none;
+		margin: 0 auto;
+	}
+
+	.border {
+		border: 1px solid grey;
+	}
+}

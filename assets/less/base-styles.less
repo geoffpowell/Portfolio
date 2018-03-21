@@ -1,0 +1,334 @@
+@import 'variables.less';
+/*************
+BASE STYLES
+**************/
+
+body {
+  font-family: @font-primary;
+  font-weight: 300;
+  color: black;
+}
+
+h1, h2, h3, h4 {
+  font-family: @font-secondary;
+}
+
+h1 {
+  color: @brand-blend-darkest;
+  font-weight: normal;
+  font-size: 48px;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  color: @brand-blend;
+  transition-duration: .3s;
+}
+
+a:hover {
+  color: @brand-blend-dark;
+}
+
+.btn {
+  font-family: @font-secondary;
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  padding: 12px 16px;
+}
+
+.btn-primary {
+  display: block;
+  cursor: pointer;
+  background-color: transparent;
+  color: @brand-blend-darkest;
+  font-size: 14px;
+  border: 1px solid @brand-blend;
+  position: relative;
+  overflow: hidden;
+  z-index: 300;
+  &:hover {
+    color: @almost-white;
+    border: 1px solid @brand-blend;
+    transition-duration: .2s;
+  }
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, @brand-green-blue, @brand-blue-green);
+    left: -100%;
+    top: 0;
+    z-index: -1;
+    transition: .15s ease-in;
+  }
+  &:hover:before {
+    left: 0;
+    transition: .15s ease-in;
+  }
+}
+
+.btn-white-text {
+  color: white;
+}
+
+
+@keyframes animatein {
+  0%  {left: -200%;}
+  100% {left: 0;}
+}
+@keyframes btncolor {
+  0%  {color: @brand-blend-dark;}
+  100% {color: white;}
+}
+
+@btn-transition-duration: .15s;
+.btn-animate-in { 
+  display: block;
+  cursor: pointer;
+  background-color: transparent;
+  color: @brand-blend-darkest;
+  font-size: 14px;
+  border: 1px solid @brand-blend;
+  outline: @brand-blend;
+  position: relative;
+  overflow: hidden;
+  z-index: 300;
+  &.enabled {
+    color: white;
+    animation-name: btncolor;
+    animation-duration: @btn-transition-duration;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(45deg, @brand-green-blue, @brand-blue-green, @brand-green-blue);
+      left: 0;
+      top: 0;
+      z-index: -1;
+      animation-name: animatein;
+      animation-duration: @btn-transition-duration;
+      animation-timing-function: ease-in;
+      //for hover transition (works fine in Chrome - should test)
+      transition-duration: @btn-transition-duration;
+    }
+    &:hover:before {
+      transform: translateX(-40%);
+    }
+    &:focus {
+      outline: @brand-blend;
+    }
+  }
+  &.disabled {
+    border: 1px solid gray;
+    cursor: default;
+    color: gray;
+    opacity: .3;
+    background-color: transparent;
+  }
+}
+
+
+
+// body {
+//  background: #FFF;
+//  color: @gray-dark;
+//  font-family: @font-primary;
+//  font-size: 16px;
+//  font-weight: 300;
+//  // letter-spacing: .01em;
+//  padding: 0;
+// }
+
+// h1 {
+//     color: @almost-white;
+// 		display: inline-block;
+// 		font-family: @font-secondary;
+// 		// text-transform: capitalize;
+// 		font-size: 48px;
+// 		padding: 22px 0;
+// 		// border-bottom: 1px solid grey;
+// 	}
+
+// a {
+// 	// color: #f4f4f4;
+// 	text-decoration: none;
+// }
+
+// p {
+// 	line-height: 1.6em;
+// 	margin-bottom: 1.6em;
+// }
+
+// li {
+// 	// list-style: disc;
+// 	// display: block;
+// }
+
+//transitions can't be summoned from display:none to display:block. I will probably need to figure out a js fix to make this smooth.
+// .nav {
+// 	display: none;
+// 	// transition: .3s ease-in-out;
+// 	// &.open {
+// 	// 	display: block;
+// 	// }
+// }
+
+//associated with the html image for the resume.
+// .resume-contact {
+// 	display: none;
+// }
+
+// .nav li {
+// 	border-top: 1px solid #414141;
+// 	padding: 10px 0;
+// 	font-family: @font-secondary;
+// 	list-style: none;
+// 	text-transform: uppercase;
+// 	position: relative;
+// 	a:hover {
+// 		text-shadow: 0px 0px 20px rgba(255, 255, 255, .3);
+// 		transition-duration: .3s;
+// 	}
+// 	&:last-child {
+// 		border-bottom: 1px solid #414141;
+// 		margin-bottom: 33px;
+// 	}
+// 	&.active div {
+// 		content: '';
+// 		display: inline-block;
+// 		height: auto;
+// 		position: relative;
+// 		span.dot {
+// 			content: '';
+// 			background: @brand-secondary;
+// 			border-radius: 50%;
+// 			display: block;
+// 			margin-left: 8px;
+// 			width: 8px;
+// 			height: 8px;
+// 			position: relative;
+// 		}
+// 		span.line {
+// 			display: none;
+// 		}
+// 	}
+// }
+
+
+// .btn-action, input[type="submit"], .btn-action-small {
+// 	background-color: transparent;
+//   border: 1px solid @brand-blend;
+// 	color: darken(@brand-blend, 15%);
+// 	display: inline-block;
+// 	font-family: @font-primary;
+// 	font-size: 16px;
+// 	margin-bottom: 1.6em;
+// 	padding: 8px 16px;
+//   text-align: center;
+// 	-webkit-transition-duration: .3s;
+// 	-moz-transition-duration: .3s;
+// 	-o-transition-duration: .3s;
+// 	-ms-transition-duration: .3s;
+// 	transition-duration: .3s;
+// 	&:hover {
+// 		background: linear-gradient(
+//       to right, 
+//       saturate(@brand-green-blue, 20%), 
+//       saturate(@brand-blue-green, 20%));
+//     border: 1px solid transparent;
+//     color: white;
+// 	}
+// }
+
+// .btn-action-small {
+// 	font-size: 14px;
+// 	padding: 6px 10px;
+// }
+
+// footer {
+// 	font-size: 14px;
+// 	border-top: 1px solid #414141;
+// 	padding-top: 20px;
+// 	text-align: center;
+// 	margin-top: 62px;
+// 	a {
+// 		text-decoration: underline;
+// 	}
+
+// 	.social-icon-group {
+// 		text-align: center;
+// 		margin-bottom: 24px;
+// 	}
+
+// }
+
+//@media screen and (min-width: @breakpoint1) {
+
+	// header, #header {
+
+ //    .header-group-1 {
+ //      padding-top: 34px;
+ //    }
+		// margin: 0 auto 0 auto;
+		// padding: 0 0 0 36px;
+	//}
+	// h1 {
+	// 	// padding: 22px 36px;
+ //    padding: 22px 0 33px 3%;
+	// }
+	// .identity-wrap {
+	// 	margin-bottom: 0;
+	// }
+	// .nav {
+	// 	height: auto;
+	// 	display: block;
+	// 	position: relative;
+	// 	text-align: right;
+	// 	top: -20px;
+		
+	// 	li {
+	// 		display: inline-block;
+	// 		padding: 0 0 4px 0;
+	// 		border: none;
+	// 		margin-left: 60px;
+	// 		font-family: @font-secondary;
+	// 		text-transform: uppercase;
+	// 		&:last-child {
+	// 			border-bottom: none;
+	// 			margin-bottom: 0;
+	// 		}
+	// 		/*****marker pin for navigation******/
+	// 		&.active div {
+	// 			position: absolute;
+	// 			right: 50%; /*works for getting all the marker containers halfway through their <li>s*/
+	// 			top: 26px;
+	// 			span.dot {
+	// 				width: 10px;
+	// 				height: 10px;
+	// 				right: -5px; /*pushes the dot just over the edge of the div container, allowing it to be on center*/
+	// 				top: 0;
+	// 			}
+	// 			span.line {
+	// 				display: block;
+	// 				width: 1px;
+	// 				height: 10px;
+	// 				background-color: grey;
+	// 				position: absolute;
+	// 				right: 0;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// .menu-icon {
+	// 	display: none;
+	// }
+//}

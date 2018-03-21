@@ -1,0 +1,180 @@
+/******************
+Grid
+******************/
+.inner-box {
+  height: 100%;
+  padding: 4.16666667%;
+}
+/*********************
+Columns
+********************/
+[class^="col-"] {
+  box-sizing: border-box;
+}
+.col-1 {
+  width: 4.54545455%;
+  float: left;
+}
+.col-2 {
+  width: 9.09090909%;
+  float: left;
+}
+.col-3 {
+  width: 13.63636364%;
+  float: left;
+}
+.col-4 {
+  width: 18.18181818%;
+  float: left;
+}
+.col-5 {
+  width: 22.72727273%;
+  float: left;
+}
+.col-6 {
+  width: 27.27272727%;
+  float: left;
+}
+.col-7 {
+  width: 31.81818182%;
+  float: left;
+}
+.col-8 {
+  width: 36.36363636%;
+  float: left;
+}
+.col-9 {
+  width: 40.90909091%;
+  float: left;
+}
+.col-10 {
+  width: 45.45454545%;
+  float: left;
+}
+.col-11 {
+  width: 50%;
+  float: left;
+}
+.col-12 {
+  width: 54.54545455%;
+  float: left;
+}
+.col-13 {
+  width: 59.09090909%;
+  float: left;
+}
+.col-14 {
+  width: 63.63636364%;
+  float: left;
+}
+.col-15 {
+  width: 68.18181818%;
+  float: left;
+}
+.col-16 {
+  width: 72.72727273%;
+  float: left;
+}
+.col-17 {
+  width: 77.27272727%;
+  float: left;
+}
+.col-18 {
+  width: 81.81818182%;
+  float: left;
+}
+.col-19 {
+  width: 86.36363636%;
+  float: left;
+}
+.col-20 {
+  width: 90.90909091%;
+  float: left;
+}
+.col-21 {
+  width: 95.45454545%;
+  float: left;
+}
+.col-22 {
+  width: 100%;
+  float: left;
+}
+.onerow {
+  clear: both;
+  overflow: hidden;
+}
+.onerow.overflow-visible {
+  overflow: visible;
+}
+.col-off-left-1 {
+  margin-left: 4.54545455%;
+}
+.col-off-left-2 {
+  margin-left: 9.09090909%;
+}
+.col-off-left-3 {
+  margin-left: 13.63636364%;
+}
+.col-off-left-4 {
+  margin-left: 18.18181818%;
+}
+.col-off-left-5 {
+  margin-left: 22.72727273%;
+}
+.col-off-left-6 {
+  margin-left: 27.27272727%;
+}
+.col-off-left-7 {
+  margin-left: 31.81818182%;
+}
+.col-off-left-8 {
+  margin-left: 36.36363636%;
+}
+.col-off-left-9 {
+  margin-left: 40.90909091%;
+}
+.col-off-left-10 {
+  margin-left: 45.45454545%;
+}
+.col-off-left-11 {
+  margin-left: 50%;
+}
+.col-off-left-12 {
+  margin-left: 54.54545455%;
+}
+.col-off-left-13 {
+  margin-left: 59.09090909%;
+}
+.col-off-left-14 {
+  margin-left: 63.63636364%;
+}
+.col-off-left-15 {
+  margin-left: 68.18181818%;
+}
+.col-off-left-16 {
+  margin-left: 72.72727273%;
+}
+.col-off-left-17 {
+  margin-left: 77.27272727%;
+}
+.col-off-left-18 {
+  margin-left: 81.81818182%;
+}
+.col-off-left-19 {
+  margin-left: 86.36363636%;
+}
+.col-off-left-20 {
+  margin-left: 90.90909091%;
+}
+.col-off-left-21 {
+  margin-left: 95.45454545%;
+}
+.col-off-left-22 {
+  margin-left: 100%;
+}
+/************************
+Common columns definitions
+*************************/
+/* *********************************************************************************************************************
+ * Small devices
+ */

@@ -1,0 +1,207 @@
+@import 'variables.less';
+
+/******************
+Grid
+******************/
+
+.inner-box {
+  height: 100%; //required for padding to work
+  padding: 1 / @numcolumns * 100%; //padding equal to 1 column.
+  //padding-top: 1 / @numcolumns * 100%; //padding equal to 1 column.
+  //padding-bottom: 1 / @numcolumns * 100%; //padding equal to 1 column.
+  //padding-left: 1 / @numcolumns * 100%; //padding equal to 1 column.
+  //padding-right: 1 / @numcolumns * 100%; //padding equal to 1 column.
+
+  //ERASE
+  // width: ((@numcolumns - 2) / @numcolumns) * 100%;
+  // margin-left: (@numcolumns - (@numcolumns - 1)) / @numcolumns * 100%;
+  //height determined (and updated on resize) in fixboxheight.js
+}
+
+/*********************
+Columns
+********************/
+[class^="col-"] {
+  box-sizing: border-box;
+}
+
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+  .col-@{i} {
+    width: (@i * 100% / @n);
+    float: left;
+  }
+  .generate-columns(@n, (@i + 1));
+}
+.generate-columns(@numcolumnsInside);
+
+.onerow {
+	clear: both;
+	overflow: hidden;
+	&.overflow-visible {
+		overflow: visible;
+	}
+}
+
+// /**************
+// Spacer Helpers
+// ***************/
+// .padding-top-1 {
+//   padding-top: 1 / @numcolumnsInside * 100%;
+// }
+// .padding-bottom-1 {
+//   padding-top: 1 / @numcolumnsInside * 100%;
+// }
+
+
+
+// /*************
+// Column offsets
+// **************/
+.generate-offsets-left(@n, @i: 1) when (@i =< @n) {
+  .col-off-left-@{i} {
+    margin-left: (@i * 100% / @n);
+  }
+  .generate-offsets-left(@n, (@i + 1));
+}
+.generate-offsets-left(@numcolumnsInside);
+
+
+
+// .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11, .col12,
+// //special grid classes for portfolio
+// .col-left-offset, .col-right {
+// 	float: none;
+// 	width: 100%;
+// }
+
+//unstack columns @ 
+//@media all and (min-width: @breakpoint1 ) {
+	// .fluidcssgrid {
+	// 	// max-width: @container1;
+	// }
+
+	// .onerow {
+	// 	padding: 0 0;
+	// }
+
+	// .col-left-offset, .col-right {
+	// 	float: left;
+	// }
+
+	// .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11, .col12 {
+	// 	float: left;
+	// 	margin: 0 3% 0 0;
+	// }
+	// .col1.last, .col2.last, .col3.last, .col4.last, .col5.last, .col6.last, .col7.last, .col8.last, .col9.last, .col10.last, .col11.last, .col12 {
+	// 	margin: 0;
+	// }
+
+	// .col-left-offset {
+	// 	margin-left: 3%;
+	// 	width: 63.3%;
+	// }
+	// .col-right {
+	// 	width: 33.3%;
+	// }
+
+	// .col1 { width: 5.5%; }
+	// .col2 { width: 14%; }
+	// .col3 { width: 22.5%; }
+	// .col4 { width: 31%; }
+	// .col5 { width: 39.5%; }
+	// .col6 { width: 48%; }
+	// .col7 { width: 56.5%; }
+	// .col8 { width: 65%; }
+	// .col9 { width: 73.5%; }
+	// .col10 { width: 82%; }
+	// .col11 { width: 90.5%; }
+	// .col12 { width: 99%; margin: 0; }
+
+	//no margins version (use for columns with full bleed against eachother):
+	// .col1.nm, .col2.nm, .col3.nm, .col4.nm, .col5.nm, .col6.nm, .col7.nm, .col8.nm, .col9.nm, .col10.nm, .col11.nm, .col12.nm {
+	// 	float: left;
+	// 	margin: 0 0 0 0;
+	// }
+
+// 	.col1.nm { width: 8.33%; }
+// 	.col2.nm { width: 16.66%; }
+// 	.col3.nm { width: 25%; }
+// 	.col4.nm { width: 33.33%; }
+// 	.col5.nm { width: 41.66%; }
+// 	.col6.nm { width: 50%; }
+// 	.col7.nm { width: 58.33%; }
+// 	.col8.nm { width: 66.66%; }
+// 	.col9.nm { width: 75%; }
+// 	.col10.nm { width: 83.33%; }
+// 	.col11.nm { width: 91.66%; }
+// 	.col12.nm { width: 100%; }
+//}
+
+//@media all and (min-width: @breakpoint2) {
+	// .fluidcssgrid {
+	// 	margin: 0 auto;
+	// 	// max-width: @container2;
+	// }
+//}
+
+
+
+// .fluidcssgrid {
+// 	margin: 0 auto;
+// 	// padding: 0 0 0 0%; /* THAT'S THE NAME ;) */
+// 	max-width: 1220px;
+// }
+
+
+/************************
+Common columns definitions
+*************************/
+// .col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11, .col12 {
+// 	float: left;
+// 	margin: 0 3% 0 0;
+// }
+
+// .col1.last, .col2.last, .col3.last, .col4.last, .col5.last, .col6.last, .col7.last, .col8.last, .col9.last, .col10.last, .col11.last, .col12 {
+// 	margin: 0;
+// }
+
+// .col1 { width: 5.5%; }
+// .col2 { width: 14%; }
+// .col3 { width: 22.5%; }
+// .col4 { width: 31%; }
+// .col5 { width: 39.5%; }
+// .col6 { width: 48%; }
+// .col7 { width: 56.5%; }
+// .col8 { width: 65%; }
+// .col9 { width: 73.5%; }
+// .col10 { width: 82%; }
+// .col11 { width: 90.5%; }
+// .col12 { width: 99%; margin: 0; }
+
+// .col1 img, .col2 img, .col3 img, .col4 img, .col5 img, .col6 img, .col7 img, .col8 img, .col9 img, .col10 img, .col11 img, .col12 img {
+// 	width: 100%;
+// 	height: auto;
+// 	display: block;
+// }
+
+
+
+/* *********************************************************************************************************************
+ * Small devices
+ */
+// @media all and (max-width: 768px) {
+// 	.onerow {
+// 		padding: 0 12px;
+// 	}
+
+// 	.col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11 {
+// 		float: none;
+// 		width: 100%;
+// 	}
+// }
+
+// @media all and (min-width: 769px) and (max-width: 1270px) {
+// 	.onerow {
+// 		padding: 0 20px;
+// 	}
+// }

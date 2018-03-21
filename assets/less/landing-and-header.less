@@ -1,0 +1,235 @@
+//landing-and-header.less
+@import 'variables.less';
+
+// header, #header {
+//   display: none;
+//   position: fixed;
+//   width: 100%;
+//   background: @gray-dark;
+//   z-index: 400;
+// }
+
+#landing {
+  transform: translate3d(0,-100%,0);
+  transition-duration: .4s;
+  position: fixed;
+  z-index: 499;
+  background: url('../img/oregon.jpg');
+  background-size: cover;
+  color: red;
+  font-weight: 600;
+  background-position: center;
+  height: 100%;
+  &.window-open {
+    -webkit-transform: translate3d(0,0,0);
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(0.85, 0, 0.17, 0.85);
+  }
+}
+
+.icon-container {
+  position: fixed;
+  top: 4%;
+  right: (1.5 / @numcolumns) * 100%;
+  z-index: 500;
+  height: 60px;
+  overflow: hidden;
+  .location-blurb {
+    position: relative;
+    transition-duration: .2s;
+    &.loc-hide {
+      transform: translateX(212px);
+    }
+    p {
+      position: relative;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: italic;
+      text-align: right;
+      line-height: 1.3em;
+      span {
+        font-size: 14px;
+        font-style: normal;
+      }
+    }
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 16px;
+    color: black;
+  }
+}
+//Menu icon (hamburger icon) styles and transforms
+.menu-icon {
+  display: inline-block;
+  //border: 1px solid @almost-white;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+  //position: fixed;
+  // top: 4%;
+  // right: (1.5 / @numcolumns) * 100%;
+  //left: (2.5 / @numcolumns) * 100%;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    //bottom: -49px;
+    display: block;
+    height: 120px;
+    width: 60px;
+    background: linear-gradient(30deg, @brand-blue-green, @brand-green-blue,@brand-blue-green);
+    transition-duration: .18s;
+  }
+  &:hover {
+    //border: 1px solid @brand-green-blue;
+    //transition-duration: .18s;
+  }
+  &:hover:before {
+    transform: translateY(-60px);
+  }
+  .inner {
+    position: relative;
+    top: 21px;
+    margin: 0 auto;
+    width: 24px;
+    height: 17px;
+    transition: .5s ease;
+    span {
+      display: block;
+      position: absolute;
+      height: 1px;
+      width: 24px;
+      background: @almost-white;
+      opacity: 1;
+      transition-delay: .3s;
+      transition-duration: .2s;
+      &:nth-child(1) {
+        top: 0px;
+        transform-origin: left;
+      }
+      &:nth-child(2) {
+        top: 8px;
+        transform-origin: left;
+      }
+      &:nth-child(3) {
+        top: 16px;
+        transform-origin: left;
+      }
+    }
+    &.open {
+      transform: scale(.7, 1) rotate(360deg); //scales the x-axis of the .inner class to 17px.
+    }
+    &.open span {
+      &:nth-child(1) {
+        width: 28px; //the final 'width' of the lines is some function of the X axis scaling down and the angle. Trial and error to find it. 
+        transform: rotate(35.31deg);
+      }
+      &:nth-child(2) {
+          width: 0px;
+          opacity: 0;
+      }
+      &:nth-child(3) {
+        width:28px;
+        transform: rotate(-35.31deg);
+      }
+    }
+  }
+}//end menu icon styles
+
+//Identity Styles
+// .identity-wrap {
+//   padding: 14px 0px 12px 0;
+//   position: relative;
+//   display: inline-block;
+//   // margin-bottom: 18px;
+//   display: inline-block;
+//   .mytitletag {
+//     color: @almost-white;
+//     display: inline-block;
+//     font-weight: 300;
+//     position: relative;
+//     bottom: 11px;
+//     margin-left: 24px;
+//   }
+// }
+
+//Navigation list styles
+// .nav {
+//   float: right;
+//   height: auto;
+//   position: relative;
+//   top: 37px;
+//   text-align: right;
+//   // top: -20px;
+//   li {
+//     a {
+//       color: @almost-white;
+//     }
+//     display: inline-block;
+//     // padding: 0 0 4px 0;
+//     // border: none;
+//     margin-left: 72px;
+//     font-size: 14px;
+//     text-transform: uppercase;
+//     // &:last-child {
+//     //   // border-bottom: none;
+//     //   // margin-bottom: 0;
+//     // }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+//mobile stuff below
+
+// .nav {
+//  display: none;
+//  transition: .3s ease-in-out;
+//  &.open {
+//   display: block;
+//  }
+// }
+
+
+// .nav li {
+//  border-top: 1px solid #414141;
+//  padding: 10px 0;
+//  font-family: @font-secondary;
+//  list-style: none;
+//  text-transform: uppercase;
+//  position: relative;
+//  a:hover {
+//    text-shadow: 0px 0px 20px rgba(255, 255, 255, .3);
+//    transition-duration: .3s;
+//  }
+//  &:last-child {
+//    border-bottom: 1px solid #414141;
+//    margin-bottom: 33px;
+//  }
+//  &.active div {
+//    content: '';
+//    display: inline-block;
+//    height: auto;
+//    position: relative;
+//    span.dot {
+//      content: '';
+//      background: @brand-secondary;
+//      border-radius: 50%;
+//      display: block;
+//      margin-left: 8px;
+//      width: 8px;
+//      height: 8px;
+//      position: relative;
+//    }
+//    span.line {
+//      display: none;
+//    }
+//  }
+// }

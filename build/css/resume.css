@@ -1,0 +1,31 @@
+/****************
+RESUME  STYLES
+*****************/
+.resume .paper {
+  color: white;
+  padding: 6% 6.25%;
+}
+.resume h2 {
+  font-family: 'Playfair Display', Arial, sans-serif;
+  margin-bottom: 1em;
+  font-size: 32px;
+}
+.resume p {
+  position: relative;
+  top: 12px;
+  margin-bottom: 2em;
+}
+.resume span.job-title {
+  padding: 2px 8px;
+  color: #F4F4F4;
+  background-color: #007f74;
+}
+.resume span.job-duration {
+  color: #00B2A3;
+}
+.resume .statement,
+.resume .experience,
+.resume .skills,
+.resume .education {
+  margin-bottom: 2em;
+}

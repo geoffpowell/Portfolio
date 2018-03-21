@@ -1,0 +1,395 @@
+@import 'variables.less';
+/*****************************************
+PORTFOLIO STYLES
+*****************************************/
+.project {
+  position: relative;
+  // overflow: hidden;
+  // &:before {
+  //   position: absolute;
+  //   display: block;
+  //   width: 101.5%; //bumping up width and height gets rid of blurred edges
+  //   height: 101.5%;
+  //   top: -8px;  /* Works with width and height to remove blurred edges.
+  //                8px is about right to hide the blur seen under the .frost:before class below. If you were to set width and height to 100% here 
+  //                and remove 'top' rule, you would see the blurred edges. 
+  //               */
+  //   content: '';
+  //   background-size: cover;
+  //   background-position: left;
+  //   z-index: 0;
+  // }
+  // &#project1:before {
+  //   background-image: url('../img/portfolio-images/kattare/kattare-website-background2.jpg');
+  // }
+  // &#project2:before {
+  //   background-image: url('../img/portfolio-images/fallfestival/fallfestival-background.jpg')
+  // }
+  // &#project3:before {
+  //   background-image: url('../img/portfolio-images/woodcraft/woodcraft-background.jpg')
+  // }
+  // &.frost:before {
+  //   //opacity: .5;
+  //   //-webkit-filter: blur(8px) grayscale(100%);
+  //   //-moz-filter: blur(8px) grayscale(100%);
+  //   //filter: blur(8px) grayscale(100%);
+  //   //filter: blur(8px) grayscale(60%);
+  //   filter: blur(6px) grayscale(20%);
+  //   transition: 3s ease-in-out;
+  // }
+  .paper {
+    background: white;
+    position: relative;
+    height: 100%; //required for the padding to work right on the .innerbox class (in grid)
+    z-index: 2;
+    padding-top: 6%;
+    box-sizing: border-box;
+    // section {
+    //   height: 100%; //required so columns don't collapse.
+    // }
+    // .project-info-container, .project-image-container {
+    //   position: relative;
+    //   height: 100%;
+    // }
+  }
+  //vars for portfolio page layout:
+  @total-width: @numcolumnsInside - (@innerOffset * 2) - 1; //in this case, 18 total
+  .project-info { //element to animate 
+    position: absolute;
+    // top: @upperOffset;
+    @left-width: 9;
+    width: @left-width/@numcolumnsInside * 100%;
+    left: @innerOffset/@numcolumnsInside * 100%;
+    height: 76%; //approximates 
+    h1 {
+      font-family: @font-tertiary;
+      white-space: nowrap;
+      margin-bottom: 24px;
+    }
+  }
+  .project-image { //element to animate
+    position: absolute;
+    top: 18%;
+    @right-width: 9;
+    right: @innerOffset/@numcolumnsInside * 100%;
+    width: @right-width/@numcolumnsInside * 100%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .skills-used {
+    border-top: 1px solid @brand-blend-dark;
+    border-bottom: 1px solid @brand-blend-dark;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 48px;
+    span {
+      font-size: 14px;
+      color: @brand-blend-dark;
+    }
+  }
+  .btn {
+    margin-bottom: 16px;
+  }
+  .project-description p {
+    padding-left: 3/@numcolumnsInside * 100%;
+  }
+
+  .portfolio-piece-counter {
+    display: none;
+    color: @brand-blend-darkest;
+    font-family: @font-secondary;
+    font-size: 21px;
+    position: absolute;
+    bottom: 0;
+    right: -24px;
+  }
+}
+
+
+// .projects-wrapper {
+//   background: @gray12;
+// }
+
+// .project {
+// 	height: auto;
+// 	position: relative;
+//   //top: 84px; //subject to change
+// 	// margin-bottom: 60px;
+// 	overflow: hidden;
+//   margin-bottom: 1px;
+//   //margin-bottom: 1 / @numcolumns * 100%;
+
+//   .skills-used-group {
+//     border-top: 1px solid @brand-blend;
+//     border-bottom: 1px solid @brand-blend;
+//     margin: 0 42px 40px 42px;
+//     p {
+//       color: darken(@brand-blend, 10%);
+//       font-size: 14px;
+//       margin-bottom: 0;
+//       padding: 4px 0;
+//     }
+//   }
+
+//   .col-right img {
+//     width: 1000px;
+//     position: relative;
+//     /* left: 60px; */
+//     bottom: 20px;
+//   }
+  
+// 	@media all and (min-width: @breakpoint1) {
+// 		height: floor(@container1/1.7);
+// 		&:before {
+// 			position: absolute;
+// 			display: block;
+// 			width: 100%;
+// 			height: 100%;
+// 			content: '';
+// 			background-size: cover;
+// 			background-position: left;
+// 			overflow: hidden;
+      // ??????
+			// -webkit-transition-duration: .5s;
+			// -moz-transition-duration: .5s;
+			// -o-transition-duration: .5s;
+			// transition-duration: .5s;
+		//}
+	// 	&#piece-one:before {
+	// 		background-image: url('../img/portfolio-images/kattare/kattare-website-background2.jpg');
+ //      background-position: top left;
+	// 	}
+	// 	&#piece-two:before {
+	// 		background-image: url('../img/portfolio-images/pacific-edge/pacificedge-background.jpg');
+	// 	}
+	// 	&#piece-three:before {
+	// 		background-image: url('../img/portfolio-images/fallfestival/fallfestival-background.jpg');
+	// 	}
+	// 	&#piece-four:before {
+	// 		background-image: url('../img/portfolio-images/woodcraft/woodcraft-background.jpg');
+	// 	}
+	// 	&#piece-five:before {
+	// 		background-image: url('../img/portfolio-images/oregon-tshirt/oregon-tshirt-background.jpg');
+	// 		background-position: bottom;
+	// 	}
+	// 	&.frost:before{
+	// 		-webkit-filter: blur(15px);
+	// 		-moz-filter: blur(15px);
+	// 		filter: blur(15px);
+	// 	}
+	// }
+	// @media all and (min-width: @breakpoint2) {
+	// 	height: floor(@container2/1.7);
+	// }
+	
+	// .col-set-height {
+		//box-shadow: 2px 20px 20px @gray-dark;
+		// position: relative;
+		// height: 598px;
+		// overflow-y: hidden;
+  //   background: rgba(255,255,255,.9);
+		// @media all and (min-width: @breakpoint1) {
+		// 	height: floor(@container1/1.7);
+		// 	background: rgba(255,255,255,.9);
+		// }
+		// @media all and (min-width: @breakpoint2) {
+		// 	height: floor(@container2/1.7);
+		// }
+	// }
+ //  h1 {
+ //    background-image: linear-gradient(to right, @brand-green-blue, @brand-blue-green);
+ //    background-size: 100% 16px;
+ //    background-position: top;
+ //    background-repeat: no-repeat;
+ //    color: @brand-blend;
+ //    // background: @brand-primary-blend;
+ //    display: block;
+ //    font-family: @font-tertiary;
+ //    font-weight: 700;
+ //    text-align: left;
+ //    font-size: 42px;
+ //    padding: 63px 42px 40px 42px;
+ //  }
+  // h2 {
+  //   font-size: 16px;
+  //   font-family: @font-secondary;
+  //   text-transform: uppercase;
+  //   margin-bottom: 1em;
+  // }
+	// .text-group {
+	// 	padding: 0px 42px 42px 42px;
+ //    .btn-action.full {
+ //      box-sizing: border-box;
+ //      display: block;
+ //      width: 100%;
+ //    }
+ //    .btn-action.half {
+ //      box-sizing: border-box;
+ //      width: 45%;
+ //      &:first-of-type {
+ //        margin-right: 10%;
+ //      }
+ //    }
+	// }
+	// .col-right {
+	// 	box-sizing: border-box;
+	// 	// padding: 0 30px 30px 30px;
+	// 	height: auto;
+	// 	overflow: hidden;
+	// 	position: relative;
+
+// 		@media all and (min-width: @breakpoint1) {
+// 			height: floor(@container1/1.7);
+// 			padding: 30px 30px 30px 30px;
+// 		}
+// 		@media all and (min-width: @breakpoint2) {
+// 			height: floor(@container2/1.7);
+// 		}
+// 	}
+// }
+
+
+// .large_portfolio_piece_wrap { /*to fill pixel area 1224*661, a ratio of about 1.85*/
+// 	padding-bottom: 54%; /*tricks the container into matching the picture ratio.*/
+// 	background-position: center;
+// 	background-size: cover;
+// 	margin-bottom: 1.5em;
+// 	height: 200px; /*gives a little more space for the pieces at small screen sizes*/
+// 	position: relative;
+// 	opacity: .82;
+// 	transition-duration: .3s;
+// 	&:hover {
+// 		opacity: 1;
+// 	}
+// }		
+
+	/*ids for each of the portfolio pieces*/
+	// #one {
+	// 	background-image: url('../img/portfolio-images/kattare-website.jpg');
+	// }
+	// #two {
+	// 	background-image: url('../img/portfolio-images/deli.jpg');
+	// }
+	// #three {
+	// 	background-image: url('../img/portfolio-images/lionshare.jpg');
+	// }
+	// #four {
+	// 	background-image: url('../img/portfolio-images/pacificedge.jpg');
+	// }
+	// #five {
+	// 	background-image: url('../img/portfolio-images/billboards.jpg');
+	// }
+	// #six {
+	// 	background-image: url('../img/portfolio-images/firstalt.jpg');
+	// }
+	// #seven {
+	// 	background-image: url('../img/portfolio-images/oregontshirt.jpg');
+	// }
+
+/*not shown in mobile sizes*/
+// .portfolio_link_group {
+// 	// display: none;
+// }
+// // .thumbnail-wrap {
+// // 	display: none;
+// // }
+// .portfolio_overlay {
+// 		width: 380px;
+// 		background: fade(@brand-primary, 80%);
+// 		display: block;
+// 		position: absolute;
+// 		top: 0;
+// 		left: 48px;
+// 		transition-duration: .3s;
+// 		z-index: 2;
+// 		}
+
+// /********************************************
+// Responsive layout adjustments - Base styles and home page
+// ********************************************/
+// @media only screen and (min-width: 768px) {
+// 	.large_portfolio_piece_wrap {
+// 		height: 0px;
+// 	}
+// }
+
+// @media only screen and (min-width: 1025px) {
+	
+// 	.link_wrap_reference_point {
+// 		position: relative;
+// 		&:last-child {
+// 			/*puts margin between the last portfolio piece and whatever comes next*/
+// 			margin-bottom: 72px;
+// 		}
+// 	}
+// 	.large_portfolio_piece_wrap {
+// 		margin-bottom: 2em;
+// 	}
+// 	// .portfolio_overlay.closed {
+// 	// 	width: 75px;
+// 	// 	height: 75px;
+// 	// 	color: transparent;
+// 	// 	span.plus {
+// 	// 		color: #FFF;
+// 	// 	}
+// 	// 	&.tertiary span.plus {
+// 	// 		color: #303030;
+// 	// 		font-weight: normal;
+// 	// 	}
+// 	// }
+// 	.portfolio_overlay {
+// 		width: 380px;
+// 		background: fade(@brand-primary, 80%);
+// 		display: block;
+// 		position: absolute;
+// 		top: 0;
+// 		left: 48px;
+// 		transition-duration: .3s;
+// 		z-index: 2;
+// 		&.secondary {
+// 			background: fade(@brand-secondary, 80%);
+// 		}
+// 		&.tertiary {
+// 			background: fade(@brand-tertiary, 90%);
+// 			color: #303030;
+// 			font-weight: normal;
+// 			& span.details {
+// 				border-bottom: 1px solid black;
+// 			}
+// 			& span.details a {
+// 				color: black;
+// 			}
+// 		}
+// 		span.details {
+// 			border-bottom: 1px solid rgba(255, 255, 255, .6);
+// 			font-family: @font-secondary;
+// 			display: inline-block;
+// 			display: none;
+// 			position: absolute;
+// 			bottom: 28px;
+// 			right: 70px;
+// 		}
+// 		span.plus {
+// 			display: inline-block;
+// 			font-family: @font-secondary;
+// 			font-size: 3em;
+// 			position: absolute;
+// 			right: 22px;
+// 			bottom: 8px;
+// 		}
+// 		div.info {
+// 			padding: 32px;
+// 			display: none;
+// 		}
+// 		h2 {
+// 			font-size: 28px;
+// 			margin-bottom: 24px;
+// 		}
+// 		p:last-child {
+// 			margin-bottom: 60px;
+// 		}
+// 	}
+// }	

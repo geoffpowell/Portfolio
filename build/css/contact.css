@@ -1,0 +1,106 @@
+.contact .paper {
+  border: 1px solid #007f74;
+  box-sizing: border-box;
+  padding: 6% 6.25%;
+  height: 100%;
+}
+.contact h2 {
+  color: #303030;
+  font-family: 'Playfair Display', Arial, sans-serif;
+  margin-bottom: 2em;
+  font-size: 32px;
+  text-align: right;
+}
+fieldset {
+  border: none;
+}
+textarea,
+input {
+  border: 1px solid #007f74;
+  padding: 12px;
+  margin: 12px 0;
+}
+textarea {
+  font-family: 'Lato', Arial, sans-serif;
+  vertical-align: middle;
+}
+textarea:focus,
+input:focus {
+  border: 1px solid #00B2A3;
+  outline: 1px solid #00e5d2;
+}
+input#name,
+input#email,
+textarea#message {
+  width: 65%;
+}
+.social-links a {
+  display: block;
+  float: right;
+  clear: both;
+  margin-bottom: 16px;
+  position: relative;
+  transition-duration: .3s;
+}
+.social-links a.hover:after {
+  margin-left: 12px;
+  transform: scale(1.2);
+  transform-origin: center;
+}
+.social-links a:after {
+  content: '';
+  display: inline-block;
+  margin-left: 8px;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 10px;
+  background-size: 30px 30px;
+  transition-duration: .3s;
+}
+#email-icon:after {
+  background-image: url('../img/email-icon.png');
+}
+#github-icon:after {
+  background-image: url('../img/github-icon.png');
+}
+#linkedin-icon:after {
+  background-image: url('../img/linkedin-icon.png');
+}
+span.input-validate {
+  display: inline-block;
+  width: 10%;
+  height: 20px;
+}
+span.input-validate .pass,
+span.input-validate .fail {
+  display: block;
+  width: 21px;
+  margin-left: 12px;
+  height: 18px;
+  background-image: url('../img/check-mark.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition-duration: .3s;
+}
+span.input-validate .fail {
+  background-image: url('../img/red-x.png');
+}
+@keyframes buttonin {
+  0% {
+    background-color: blue;
+  }
+  50% {
+    background-color: red;
+  }
+  75% {
+    background-color: black;
+  }
+  100% {
+    background-color: pink;
+  }
+}
+#submit-message {
+  margin-top: 16px;
+}

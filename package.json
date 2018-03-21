@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-vs4",
+  "version": "1.0.0",
+  "description": "portfolio 4th version",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^1.0.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-watch": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geoffpowell/portfolio-vs4.git"
+  },
+  "author": "Geoff Powell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geoffpowell/portfolio-vs4/issues"
+  },
+  "homepage": "https://github.com/geoffpowell/portfolio-vs4#readme"
+}
