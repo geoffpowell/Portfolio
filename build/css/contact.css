@@ -1,15 +1,8 @@
 .contact .paper {
   border: 1px solid #007f74;
   box-sizing: border-box;
-  padding: 6% 6.25%;
+  padding: 6.5% 6.25% 6% 6.25%;
   height: 100%;
-}
-.contact h2 {
-  color: #303030;
-  font-family: 'Playfair Display', Arial, sans-serif;
-  margin-bottom: 2em;
-  font-size: 32px;
-  text-align: right;
 }
 fieldset {
   border: none;
@@ -34,6 +27,42 @@ input#email,
 textarea#message {
   width: 65%;
 }
+@keyframes pulse {
+  0% {
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+  }
+  50% {
+    transform: scale(1.4);
+    transform-origin: center;
+    margin-left: 12px;
+  }
+  100% {
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+  }
+}
+.social-links {
+  position: relative;
+}
+.social-links h2 {
+  color: #004c46;
+  font-family: 'Playfair Display', Arial, sans-serif;
+  margin-bottom: 2em;
+  font-size: 36px;
+  opacity: 0;
+  text-align: right;
+  position: relative;
+  right: 100px;
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(0.85, 0, 0.45, 1.4);
+}
+.social-links h2.active {
+  opacity: 1;
+  right: 0;
+}
 .social-links a {
   display: block;
   float: right;
@@ -44,8 +73,22 @@ textarea#message {
 }
 .social-links a.hover:after {
   margin-left: 12px;
-  transform: scale(1.2);
+  transform: scale(1.4);
   transform-origin: center;
+}
+.social-links a.loaded#github-icon:after,
+.social-links a.loaded#linkedin-icon:after,
+.social-links a.loaded#email-icon:after {
+  animation-name: pulse;
+  animation-duration: .8s;
+  animation-timing-function: ease-in-out;
+  animation-delay: .6s;
+}
+.social-links a.loaded#linkedin-icon:after {
+  animation-delay: 1s;
+}
+.social-links a.loaded#email-icon:after {
+  animation-delay: 1.4s;
 }
 .social-links a:after {
   content: '';

@@ -37,13 +37,22 @@
   <script src="../assets/js/scrolloverflow.js"></script>
   <script src="js/jquery.fullPage.js"></script> 
  <!--  <script src="../assets/js/menu.js"></script>
- -->  <!-- <script src="../assets/js/app.js"></script> -->
+ -->  
+  <script src="../assets/js/app.js"></script>
   <!-- <script src="../assets/js/test.js"></script> -->
-  <script src="../assets/js/app2.js"></script>
-  <script src="../assets/js/app3.js"></script>
+  <!-- <script src="../assets/js/app2.js"></script> -->
+  <!-- <script src="../assets/js/app3.js"></script> -->
   <!--<script src="../assets/js/fixboxheight.js"></script><-->
   <script>
-    
+    $(document).ready(function() {
+      $('#fullpage').fullpage({
+        easingcss3: 'cubic-bezier(0.85, 0, 0.17, 0.85)',
+        sectionsColor: ['white','white', 'white', 'white', 'white', '#303030', 'white'],
+        scrollOverflow: true, //for resumé section
+        //anchors: myAnchors, //using data-anchor attribute on HTML instead.
+        menu: '#menu'
+      });
+    });
   </script>
   <!--<script src="../assets/js/menu.js"></script>
   <script src="../assets/js/landing.js"></script>-->
@@ -73,7 +82,6 @@
     </p>
     <ul id="menu" class="navigation">
     </ul>
-
   </div>
 
   <div id="fullpage">
@@ -257,124 +265,127 @@
     <div class="section resume" data-anchor="Resume">
       <div class="inner-box">
         <div class="paper onerow">
-          <div class="onerow statement">
-            <div class="col-4">
-              <h2>Summary</h2>
-            </div>
-            <div class="col-16 col-off-left-1">
-              <p> (Entry Level)
-              I'm a content-first visual designer focused on designing and developing for the web. Among my top priorities are site usability, positive user experience, simple aesthetics, and clean, documented code. With outstanding communication skills and self-motivation I work efficiently both in teams and alone to produce high quality visual and interactive products.</p>
-            </div>
-          </div><!-- end statement -->
-
-          <div class="onerow experience">
-            <div class="onerow">
+          <section>
+            <div class="onerow statement">
               <div class="col-4">
-                <h2>Experience</h2>
+                <h2>Summary</h2>
               </div>
-              <div class="col-4 col-off-left-1">
+              <div class="col-16 col-off-left-1">
+                <p> (Entry Level)
+                I'm a content-first visual designer focused on designing and developing for the web. Among my top priorities are site usability, positive user experience, simple aesthetics, and clean, documented code. With outstanding communication skills and self-motivation I work efficiently both in teams and alone to produce high quality visual and interactive products.</p>
+              </div>
+            </div><!-- end statement -->
+            <div class="onerow experience">
+              <div class="onerow">
+                <div class="col-4">
+                  <h2>Experience</h2>
+                </div>
+                <div class="col-4 col-off-left-1">
+                    <p>
+                      <span class="job-title">Web &amp; Graphic Designer</span><br>
+                      <span>K&auml;ttare Internet Services</span><br>
+                      <span class="job-duration">4/14 - Current</span>
+                    </p>
+                </div>
+                <div class="col-10 col-off-left-1">
+                    <p>
+                      Redesign, code, document and maintain company website. Design print and web ads, write ad copy. Design and develop static web pages. Perform HTML, CSS &amp; jQuery / Javascript updates to K&auml;ttare's internal site to improve usability.
+                    </p>
+                </div>
+              </div>
+              <div class="onerow">
+                <div class="col-4 col-off-left-5">
                   <p>
                     <span class="job-title">Web &amp; Graphic Designer</span><br>
-                    <span>K&auml;ttare Internet Services</span><br>
-                    <span class="job-duration">4/14 - Current</span>
+                    <span>Independent Projects</span><br>
+                    <span class="job-duration">9/13 - Current</span>
                   </p>
-              </div>
-              <div class="col-10 col-off-left-1">
+                </div>
+                <div class="col-10 col-off-left-1">
                   <p>
-                    Redesign, code, document and maintain company website. Design print and web ads, write ad copy. Design and develop static web pages. Perform HTML, CSS &amp; jQuery / Javascript updates to K&auml;ttare's internal site to improve usability.
+                    Contract out to design an array of products, from logos to fully functional websites. Continually experiment with new languages and design ideas.
                   </p>
+                </div>
+              </div>
+              <div class="onerow">
+                <div class="col-4 col-off-left-5">
+                  <p>
+                    <span class="job-title">Production Lead</span><br>
+                    <span>Media Services @ OSU</span><br>
+                    <span class="job-duration">3/11 - 6/13</span>
+                  </p>
+                </div>
+                <div class="col-10 col-off-left-1">
+                  Designed and produced several graphic products for department use and display, including training modules, poster templates, and informational signs. Managed office resources and trained student workers. Worked with web developers to help create online product order forms.
+                </div>
+              </div><!--end inner row -->
+            </div><!--end experience row-->
+            <div class="onerow skills">
+              <div class="col-4">
+                <h2>Skills</h2>
+              </div>
+              <div class="col-6 col-off-left-1">
+                <p>HTML, CSS, Javascript/jQuery, Photoshop, Illustrator, 3D Modeling, Copy Writing.</p>
               </div>
             </div>
-            <div class="onerow">
-              <div class="col-4 col-off-left-5">
-                <p>
-                  <span class="job-title">Web &amp; Graphic Designer</span><br>
-                  <span>Independent Projects</span><br>
-                  <span class="job-duration">9/13 - Current</span>
-                </p>
+            <div class="onerow education">
+              <div class="col-4">
+                <h2>Education</h2>
               </div>
               <div class="col-10 col-off-left-1">
-                <p>
-                  Contract out to design an array of products, from logos to fully functional websites. Continually experiment with new languages and design ideas.
-                </p>
+                <p>Oregon State University, 2013</p>
+              </div>
+              <div class="col-4">
+                <a class="btn btn-primary btn-white-text" href="#">
+                  Print Resume
+                </a>
               </div>
             </div>
-            <div class="onerow">
-              <div class="col-4 col-off-left-5">
-                <p>
-                  <span class="job-title">Production Lead</span><br>
-                  <span>Media Services @ OSU</span><br>
-                  <span class="job-duration">3/11 - 6/13</span>
-                </p>
-              </div>
-              <div class="col-10 col-off-left-1">
-                Designed and produced several graphic products for department use and display, including training modules, poster templates, and informational signs. Managed office resources and trained student workers. Worked with web developers to help create online product order forms.
-              </div>
-            </div><!--end inner row -->
-          </div><!--end experience row-->
-          <div class="onerow skills">
-            <div class="col-4">
-              <h2>Skills</h2>
-            </div>
-            <div class="col-6 col-off-left-1">
-              <p>HTML, CSS, Javascript/jQuery, Photoshop, Illustrator, 3D Modeling, Copy Writing.</p>
-            </div>
-          </div>
-          <div class="onerow education">
-            <div class="col-4">
-              <h2>Education</h2>
-            </div>
-            <div class="col-10 col-off-left-1">
-              <p>Oregon State University, 2013</p>
-            </div>
-            <div class="col-4">
-              <a class="btn btn-primary btn-white-text" href="#">
-                Print Resume
-              </a>
-            </div>
-          </div>
+          </section>
         </div><!--end paper-->
       </div><!--end inner-box-->
     </div><!-- end section -->
     <div class="section contact" data-anchor="Contact">
       <div class="inner-box">
         <div class="paper">
-          <div class="onerow">
-            <div class="col-5 social-links">
-              <h2>Let's work together.</h2>
-              <a href="" id="github-icon">Github</a><br>
-              <a href="" id="linkedin-icon">LinkedIn</a><br>
-              <a href="" id="email-icon">Email</a>
-            </div>
-            <div class="col-14 col-off-left-2">
-              <form method="post" action="contact.php" name="contact_form">
-                <fieldset>
-                  <div class="onerow form-spacer">
-                    <label for="name" class="col3">Name:</label>
-                    <div class="col9 last">
-                      <input type="text" name="name" id="name" maxlength="50"><span class="input-validate"><span id="validate_name" class=""></span></span>
-                    </div>
-                  </div>
-                  <div class="onerow form-spacer">
-                    <label for="email" class="col3">Email:</label>
-                    <div class="col9 last">
-                      <input maxlength="50" type="text" name="email" id="email"><span class="input-validate"><span id="validate_email" class=""></span></span>
-                    </div>
-                  </div>
-                  <div class="onerow form-spacer">
-                    <label for="message" class="col3">Message:</label>
+          <section>
+            <div class="onerow">
+              <div class="col-5 social-links">
+                <h2>Let's work<br>together.</h2>
+                <a href="https://github.com/geoffpowell" class="social-icon" id="github-icon">Github</a><br>
+                <a href="" class="social-icon" id="linkedin-icon">LinkedIn</a><br>
+                <a href="mailto:geoff@geoffpowell.net" class="social-icon" id="email-icon">Email</a>
+              </div>
+              <div class="col-14 col-off-left-2">
+                <form method="post" action="contact.php" name="contact_form">
+                  <fieldset>
+                    <div class="onerow form-spacer">
+                      <label for="name" class="col3">Name:</label>
                       <div class="col9 last">
-                        <textarea class="col9 last" name="message" id="message"></textarea><span class="input-validate"><span id="validate_message" class=""></span></span>
+                        <input type="text" name="name" id="name" maxlength="50"><span class="input-validate"><span id="validate_name" class=""></span></span>
                       </div>
-                  </div>
-                  <div class="onerow form-spacer" style="overflow:visible">
-                    <button class="btn btn-animate-in disabled" id="submit-message" type="submit" form="" disabled value="Send Message">Send Message</button>
-                    <!-- <input id="submit-message" disabled="disabled" type="submit" value="Send Message"> -->
-                  </div>
-                </fieldset>
-              </form>
+                    </div>
+                    <div class="onerow form-spacer">
+                      <label for="email" class="col3">Email:</label>
+                      <div class="col9 last">
+                        <input maxlength="50" type="text" name="email" id="email"><span class="input-validate"><span id="validate_email" class=""></span></span>
+                      </div>
+                    </div>
+                    <div class="onerow form-spacer">
+                      <label for="message" class="col3">Message:</label>
+                        <div class="col9 last">
+                          <textarea class="col9 last" name="message" id="message"></textarea><span class="input-validate"><span id="validate_message" class=""></span></span>
+                        </div>
+                    </div>
+                    <div class="onerow form-spacer" style="overflow:visible">
+                      <button class="btn btn-animate-in disabled" id="submit-message" type="submit" form="" disabled value="Send Message">Send Message</button>
+                      <!-- <input id="submit-message" disabled="disabled" type="submit" value="Send Message"> -->
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
             </div>
-          </div>
+          </section>
         </div><!--end onerow -->
       </div><!-- end inner box-->
     </div>

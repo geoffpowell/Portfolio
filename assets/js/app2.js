@@ -24,18 +24,46 @@ $(document).ready(function(){
 	    menu: '#menu',
       onLeave: function(index) {
         $('.location-blurb').addClass('loc-hide');
+        var leftSection = $(this);
+        var leftSectionSection = $(this).find('section');
+        if (leftSection.hasClass('project')) {
+          //project info moves to left
+          leftSectionSection.children('.project-info').removeClass('active');
+          //projet image moves to right
+          leftSectionSection.children('.project-image').removeClass('active');
+        } else if (leftSection.hasClass('resume')) {
+          console.log('left resume section');
+        } else if (leftSection.hasClass('contact')) {
+          leftSectionSection.find('h2').removeClass('active');
+          leftSectionSection.find('.social-icon').removeClass('loaded');
+        }
       },
 
 	    afterLoad: function(anchorLink, index){
   	    //change location blurb
   			var loadedSection = $(this);
-  			var thisPage = index;
+        var loadedSectionSection = $(this).find('section');
+  			var thisPageIndex = index;
+        $('.location-blurb p').css('color', 'black');
   			if (loadedSection.hasClass('project')){
-  				anchorLink = '<span class="small-text"> Portfolio ' + thisPage + '/' + numProjects + '</span><br>' + anchorLink;
-  			}
+  				anchorLink = '<span class="small-text"> Portfolio ' + thisPageIndex + '/' + numProjects + '</span><br>' + anchorLink;
+        //animations
+        loadedSectionSection.children('.project-info').addClass('active');
+        loadedSectionSection.children('.project-image').addClass('active');
+  			} else if (loadedSection.hasClass('resume')) {
+          $('.location-blurb p').css('color', 'white');
+        } else if (loadedSection.hasClass('contact')) {
+          //animations
+          loadedSectionSection.find('h2').addClass('active');
+          loadedSectionSection.find('.social-icon').addClass('loaded');
+          console.log('contact');
+          //social icons pulsate in descending order.
+          //user gets put into name field
+
+        }
   			$('.location-blurb p').html(anchorLink);
         $('.location-blurb').removeClass('loc-hide');
-  		  }
+  		}
     });
 
     //MENU FUNCTIONALITY

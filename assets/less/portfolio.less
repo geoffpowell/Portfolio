@@ -59,26 +59,39 @@ PORTFOLIO STYLES
     // top: @upperOffset;
     @left-width: 9;
     width: @left-width/@numcolumnsInside * 100%;
-    left: @innerOffset/@numcolumnsInside * 100%;
+    left: -60%;
     height: 76%; //approximates 
+    opacity: .6;
+    transition-duration: .35s;
+    transition-timing-function: cubic-bezier(0.85, 0, .17, .85);
     h1 {
       font-family: @font-tertiary;
       white-space: nowrap;
       margin-bottom: 24px;
     }
+    &.active {
+      opacity: 1;
+      left: @innerOffset/@numcolumnsInside * 100%;
+    }
   }
   .project-image { //element to animate
     position: absolute;
+    opacity: .6;
     top: 18%;
+    right: -60%;
     @right-width: 9;
-    right: @innerOffset/@numcolumnsInside * 100%;
     width: @right-width/@numcolumnsInside * 100%;
+    transition-duration: .32s;
+    transition-timing-function: cubic-bezier(0.85, 0, 0.17, 0.85);
+    &.active {
+      opacity: 1;
+      right: @innerOffset/@numcolumnsInside * 100%;
+    }
     img {
       width: 100%;
       height: auto;
     }
   }
-
   .skills-used {
     border-top: 1px solid @brand-blend-dark;
     border-bottom: 1px solid @brand-blend-dark;
