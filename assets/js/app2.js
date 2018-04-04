@@ -3,8 +3,13 @@ $(document).ready(function(){
 	//CREATE HTML MENU FROM EACH DATA-ANCHOR
     $.each($('.section'), function(){
     	var dataAnchor = $(this).attr('data-anchor');
-    	$('ul.navigation').append('<li data-menuanchor="' + dataAnchor + '"><a href="#' + dataAnchor + '">' + dataAnchor + '</a></li>'
-    	);
+      //if this is a portfolio item, append the data anchor to the ul inside the ul
+      if ($(this).hasClass('project')) {
+        $('ul#sub-menu #container').append('<li data-menuanchor="' + dataAnchor + '"><a href="#' + dataAnchor + '">' + dataAnchor + '</a></li>');
+      } else {
+      	$('ul#menu').append('<li data-menuanchor="' + dataAnchor + '"><a href="#' + dataAnchor + '">' + dataAnchor + '</a></li>'
+      	);
+      }
     });
 
     //count total number of portfolio projects.
@@ -33,6 +38,7 @@ $(document).ready(function(){
           leftSectionSection.children('.project-image').removeClass('active');
         } else if (leftSection.hasClass('resume')) {
           console.log('left resume section');
+          leftSection.find('.paper').removeClass('active');
         } else if (leftSection.hasClass('contact')) {
           leftSectionSection.find('h2').removeClass('active');
           leftSectionSection.find('.social-icon').removeClass('loaded');
@@ -52,13 +58,12 @@ $(document).ready(function(){
         loadedSectionSection.children('.project-image').addClass('active');
   			} else if (loadedSection.hasClass('resume')) {
           $('.location-blurb p').css('color', 'white');
+          loadedSection.find('.paper').addClass('active');
         } else if (loadedSection.hasClass('contact')) {
           //animations
           loadedSectionSection.find('h2').addClass('active');
           loadedSectionSection.find('.social-icon').addClass('loaded');
           console.log('contact');
-          //social icons pulsate in descending order.
-          //user gets put into name field
 
         }
   			$('.location-blurb p').html(anchorLink);

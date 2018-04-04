@@ -10,16 +10,85 @@
 // }
 
 #landing {
+  width: 100%;
   transform: translate3d(0,-100%,0);
   transition-duration: .4s;
   position: fixed;
   z-index: 499;
   background: url('../img/oregon.jpg');
   background-size: cover;
-  color: red;
-  font-weight: 600;
   background-position: center;
   height: 100%;
+  .paper {
+    position: relative;
+    height: 100%; //required for the padding to work right on the .innerbox class (in grid)
+    padding-top: 5%;
+    box-sizing: border-box;
+  }
+  .landing-row-group {
+    height: 35%;
+    margin-bottom: 4%;
+  }
+  .name-box {
+    text-align: right;
+    font-family: 'Playfair Display';
+    font-size: 90px;
+    height: 100%;
+    color: @brand-blend;
+    position: relative;
+    p {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      line-height: .9em;
+    }
+    span {
+      font-size: 70px;
+    }
+  }
+  .description-box {
+    position: relative;
+    height: 100%;
+    p {
+      position: absolute;
+      bottom: 0;
+      font-weight: 300;
+      color: white;
+    }
+  }
+  ul#menu {
+    font-size: 24px;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    position: relative;
+    li {
+      display: inline-block;
+      list-style: none;
+      margin-left: 180px;
+      &:first-child {
+        margin-left: 0px;
+      }
+      ul#sub-menu {
+        #container {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          left: 0;
+          li {
+           font-size: 16px;
+           margin-left: 60px;
+            &:first-child {
+             margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
   &.window-open {
     -webkit-transform: translate3d(0,0,0);
     transition-duration: .4s;

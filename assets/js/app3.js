@@ -13,7 +13,7 @@ $(document).ready(function(){
 
   //when load is done, site is clear to go into the interactive state, unless minumum time in load hasn't been met.
 
-  $('#fullpage').hide();
+  //$('#fullpage').hide();
   $('.icon-container').hide();
   $('#landing').addClass('window-open');
   //$.fn.fullpage.setAllowScrolling(false, 'all');
@@ -22,7 +22,7 @@ $(document).ready(function(){
    // console.log('mousewheel moved');
   //will need to check that this bind works on all devices(for instance what about touch devices);
     $('#landing').removeClass('window-open');
-    $('#fullpage').show();
+    //$('#fullpage').show();
     $('.icon-container').show();
     //$('.location-blurb').removeClass('loc-hide'); //this line is needed but only bound to the landing page.
     //make the first portfolio page that this opens up on active so we can see it.
