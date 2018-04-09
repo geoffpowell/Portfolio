@@ -5,7 +5,7 @@ $(document).ready(function(){
     	var dataAnchor = $(this).attr('data-anchor');
       //if this is a portfolio item, append the data anchor to the ul inside the ul
       if ($(this).hasClass('project')) {
-        $('ul#sub-menu #container').append('<li data-menuanchor="' + dataAnchor + '"><a href="#' + dataAnchor + '">' + dataAnchor + '</a></li>');
+        $('ul#sub-menu #sub-menu-container').append('<li data-menuanchor="' + dataAnchor + '"><a href="#' + dataAnchor + '">' + dataAnchor + '</a></li>');
       } else {
       	$('ul#menu').append('<li data-menuanchor="' + dataAnchor + '"><a href="#' + dataAnchor + '">' + dataAnchor + '</a></li>'
       	);
@@ -91,16 +91,21 @@ $(document).ready(function(){
   	});
   	$('.navigation li a').click(function(e){
   		e.preventDefault();
-      //if we've just come into the app:
-        $('#fullpage').show(); 
-        $('.icon-container').show();
-  		$.fn.fullpage.silentMoveTo($(this).parent().attr('data-menuanchor'));
-      $.fn.fullpage.setAllowScrolling(true, 'all');
-      $.fn.fullpage.setKeyboardScrolling(true, 'all');
-  		$('#landing').removeClass('window-open');
-  		$('.menu-icon .inner').removeClass('open');
-  		//$('.location-blurb p').css('display', 'block');
-      $('.location-blurb').removeClass('loc-hide');
+      if ($(this).is('#portfolio-link')) {
+        console.log('portfolio-link');
+        $("#sub-menu-container").toggleClass('active');
+      } else {
+        //if we've just come into the app:
+          $('#fullpage').show(); 
+          $('.icon-container').show();
+    		$.fn.fullpage.silentMoveTo($(this).parent().attr('data-menuanchor'));
+        $.fn.fullpage.setAllowScrolling(true, 'all');
+        $.fn.fullpage.setKeyboardScrolling(true, 'all');
+    		$('#landing').removeClass('window-open');
+    		$('.menu-icon .inner').removeClass('open');
+    		//$('.location-blurb p').css('display', 'block');
+        $('.location-blurb').removeClass('loc-hide');
+      }
   	});
  
 });

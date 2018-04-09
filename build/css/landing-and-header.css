@@ -48,6 +48,7 @@
 }
 #landing ul#menu {
   font-size: 24px;
+  font-weight: 400;
   text-transform: uppercase;
   display: block;
   margin: 0 auto;
@@ -63,17 +64,31 @@
 #landing ul#menu li:first-child {
   margin-left: 0px;
 }
-#landing ul#menu li ul#sub-menu #container {
-  position: absolute;
-  top: 60px;
-  width: 100%;
-  left: 0;
+#landing ul#menu li a#portfolio-link {
+  cursor: pointer;
 }
-#landing ul#menu li ul#sub-menu #container li {
+#landing ul#menu li a:hover {
+  color: white;
+}
+#landing ul#menu li ul#sub-menu #sub-menu-container {
+  opacity: 0;
+  position: absolute;
   font-size: 16px;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  left: -150%;
+  transition-duration: .3s;
+}
+#landing ul#menu li ul#sub-menu #sub-menu-container.active {
+  font-size: 16px;
+  left: 0;
+  opacity: 1;
+}
+#landing ul#menu li ul#sub-menu #sub-menu-container li {
   margin-left: 60px;
 }
-#landing ul#menu li ul#sub-menu #container li:first-child {
+#landing ul#menu li ul#sub-menu #sub-menu-container li:first-child {
   margin-left: 0;
 }
 #landing.window-open {
