@@ -36,6 +36,11 @@
     height: 100%;
     color: @brand-blend;
     position: relative;
+    svg {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
     p {
       position: absolute;
       bottom: 0;
@@ -49,22 +54,61 @@
   .description-box {
     position: relative;
     height: 100%;
-    p {
+    p#description {
+      opacity: 0;
       position: absolute;
       bottom: 0;
       font-weight: 300;
       color: white;
     }
+    p#counter {
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      font-family: 'playfair display';
+      font-weight: 400;
+      font-size: 100px;
+      line-height: 1.2em;
+      color: @brand-blue-green;
+    }
+  }
+  #line-group {
+      width: 842px; //width of SVG group at normal size
+      display: block;
+      margin: 0 auto;
+      position: relative;
+      height: 28px; //height of SVG group at normal size
+      margin-bottom: 30px;
+    svg#menuline {
+      z-index: 0;
+    }
+    svg#menuline, svg#menuline2 {
+      position: absolute;
+    }
+    svg#menuline2 {
+      z-index: 20;
+      polyline {
+        //opacity: 0;
+        stroke-dasharray: 300px;
+        stroke-dashoffset: 300px;
+        transition-duration: .4s;
+        &.active, &.sticky {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
   }
   ul#menu {
+    visibility: hidden;
+    opacity: 0;
     font-size: 24px;
     font-weight: 400;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    display: block;
     margin: 0 auto;
     text-align: center;
     width: 80%;
-    position: relative;
+    position: relative;  
     li {
       display: inline-block;
       list-style: none;
@@ -75,6 +119,9 @@
       a {
         &#portfolio-link {
           cursor: pointer;
+          &.white {
+            color: white;
+          }
         }
         &:hover {
           color: white;
@@ -90,15 +137,24 @@
           width: 100%;
           left: -150%;
           transition-duration: .3s;
-          &.active {
+          &.open {
             font-size: 16px;
             left: 0;
             opacity: 1;
           }
           li {
+          a {
+            transition-duration: .4s;
+            &.white {
+              color: rgba(255,255,255,.6);
+            }
+            &:hover {
+              color: rgb(255,255,255,1);
+            }
+          }
            margin-left: 60px;
             &:first-child {
-             margin-left: 0;
+              margin-left: 0;
             }
           }
         }
