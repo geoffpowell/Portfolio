@@ -196,13 +196,12 @@ $(document).ready(function(){
     });
     $("#portfolio-link").hover(function(){
       if ($("#polyline4").hasClass('sticky')) {
-        console.log('polyline is stuck');
+        console.log('polyline is sticky and returned false');
         return false;
       } else {
-        console.log('polyline is not stuck');
-        $("polyline4").toggleClass('active');
+        console.log('polyline is not stuck open so we can animate it');
+        $("#polyline4").toggleClass('active');
       }
-      $("#polyline4").toggleClass('active');
     });
     $("#Resume-link").hover(function(){
       //white line goes away, sub-menu container stays open, link and submenu change colors. 
