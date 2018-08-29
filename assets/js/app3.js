@@ -3,7 +3,7 @@
  //  });
 
  $(window).load(function(){
-    console.log("All resources finished loading!");
+    //console.log("All resources finished loading!");
  });
 
 
@@ -19,7 +19,7 @@ $(document).ready(function(){
   //when you scroll on the landing page, the first slide needs to be the first section, not the second
   //the JS load will have a min time, and the animations and stuff will continue for as long as the loading takes within reason.
 
-  //when load is done, site is clear to go into the interactive state, unless minumum time in load hasn't been met.
+  //when load is done, site is clear to go into the interactive state, unless minimum time in load hasn't been met.
   //console.log('app 3 is active');
   //$('#fullpage').hide();
   $('.icon-container').hide();
@@ -68,7 +68,7 @@ $(document).ready(function(){
   //var reticulating = Snap.select('.reticulating');
   //var geoffPoints = geoff.node.getAttribute('d');
   //var reticulatingPoints = reticulating.node.getAttribute('d');
-  var nameTransitionSpeed = 1000;
+  var nameTransitionSpeed = 500;
   var pullDownMatrix = new Snap.Matrix();
   //pullDownMatrix.scale(.5,.5, 40, 30);
   pullDownMatrix.translate(0,50);
@@ -164,10 +164,10 @@ $(document).ready(function(){
       percentDoneTimeSegment * (segment+1) + millisecondRange
     );
     setTimeout(function(){
-      console.log(segment+1 + ' updated');
-      console.log('random int was ' + randomizedSegment);
+      //console.log(segment+1 + ' updated');
+      //console.log('random int was ' + randomizedSegment);
       $("#counter span").text(Math.floor(randomizedSegment/totalLineTime*100));
-      console.log(Math.floor(randomizedSegment/totalLineTime*100) + "%");
+      //console.log(Math.floor(randomizedSegment/totalLineTime*100) + "%");
     //}, percentDoneTimeSegment * (segment+1)); //use this line for even 'percentDone intervals'
       }, randomizedSegment);
     //console.log("this time segment was " + percentDoneTimeSegment*(segment + 1));
@@ -178,66 +178,272 @@ $(document).ready(function(){
   }
 
   //the last segment always lands on 100% and fires the functions to change the counter to welcome text, menu, etc
+  var portfolioMenuOpen = false;
+
+  //TIMEOUT RELATIVE TO THE TOTAL LINE TIME???
   setTimeout(function(){
-    console.log(percentDoneTimeSegment*numSegments/totalLineTime*100 + "%");
+    //console.log(percentDoneTimeSegment*numSegments/totalLineTime*100 + "%");
     $("#counter span").text('100');
     $("ul#menu").css('visibility', 'visible');
     $("ul#menu").animate({'opacity': 1}, nameTransitionSpeed*3);
     $(".description-box #counter").animate({'opacity': 0}, nameTransitionSpeed);
     $(".description-box #description").animate({'opacity': 1}, nameTransitionSpeed*3);
     
-    // set hover states for svg line segments and menu items
+    //Repeatable active states
+    var portfolioActive = $('#sub-menu li[data-menuanchor]').hasClass('active');
+    var resumeActive = $('li[data-menuanchor="Resume"]').hasClass('active');
+    var contactActive = $('li[data-menuanchor="Contact"]').hasClass('active');
+
+
+    // SET HOVER STATES for svg line segments and menu items
     $("#portfolio-link").click(function(e){
       e.preventDefault();
+      $("#sub-menu-container").toggleClass('open'); 
       $(this).toggleClass('white');
-      $("#sub-menu-container").toggleClass('open'); //if closed
       $("#polyline4").toggleClass('sticky');
       $("#sub-menu-container li a").toggleClass('white');
-    });
-    $("#portfolio-link").hover(function(){
       if ($("#polyline4").hasClass('sticky')) {
-        console.log('polyline is sticky and returned false');
+        portfolioMenuOpen = true;
+      } else {
+        portfolioMenuOpen = false;
+      }
+      console.log('Portfolio Menu is Open?' + Boolean(portfolioMenuOpen));
+
+      if (portfolioActive) {
+        //do nothing
+      } else if (resumeActive) {
+        $("#Resume-link").addClass('temp-unwhite');
+        $("#polyline5").addClass('temp-unsticky');
+      } else if (contactActive){
+        $("#Contact-link").addClass('temp-unwhite');
+        $("#polyline6").addClass('temp-unsticky');
+      } else {
+        console.log('no menu item is active');
         return false;
+      }
+    });
+
+    $("#portfolio-link").hover(function(){ 
+      if (portfolioMenuOpen) {
+        console.log('sub menu is open and returned false');
       } else {
         console.log('polyline is not stuck open so we can animate it');
         $("#polyline4").toggleClass('active');
+
+        if ($('li[data-menuanchor="Resume"]').hasClass('active')) {
+          $("#Resume-link").toggleClass('temp-unwhite');
+          $("#polyline5").toggleClass('temp-unsticky');
+        } 
+        else if ($('li[data-menuanchor="Contact"]').hasClass('active')) {
+          $("#Contact-link").toggleClass('temp-unwhite');
+          $("#polyline6").toggleClass('temp-unsticky');
+        }
       }
     });
+
     $("#Resume-link").hover(function(){
-      //white line goes away, sub-menu container stays open, link and submenu change colors. 
-      $("#portfolio-link").removeClass('white');
-      $("#sub-menu-container li a").removeClass('white')
-      $("#polyline4").removeClass('active sticky');
-
-      $("#polyline5").toggleClass('active');
-      //change submenu to green text
-    });
-    $("#Contact-link").hover(function(){
-      //white line goes away, sub-menu container stays open, link and submenu change colors. 
-      $("#portfolio-link").removeClass('white');
-      $("#sub-menu-container li a").removeClass('white')
-      $("#polyline4").removeClass('active sticky');
-
-      $("#polyline6").toggleClass('active');
-      //change submenu to green text
-    });
-    $("#Resume-link, #Contact-link").mouseout(function(){
-      if ($("#sub-menu-container").hasClass('open')) {
-        $("#portfolio-link").addClass('white');
-        $("#polyline4").addClass('active sticky');
-        $("#sub-menu-container li a").addClass('white');
-      } else {
-        return false;
+      if (portfolioMenuOpen && resumeActive) {
+        //these link styles
+        $("#Resume-link").toggleClass('temp-unwhite');
+        $("#polyline5").toggleClass('temp-unsticky');
+        //portfolio link styles
+        $("#portfolio-link").toggleClass('temp-unwhite');
+        $("#polyline4").toggleClass('temp-unsticky');
+        $("#sub-menu-container li a").toggleClass('temp-unwhite');
+      } 
+      else if ((portfolioMenuOpen && contactActive) ||
+              (portfolioMenuOpen && portfolioActive)){
+        //portfolio link styles
+        $("#portfolio-link").toggleClass('temp-unwhite');
+        $("#polyline4").toggleClass('temp-unsticky');
+        $("#sub-menu-container li a").toggleClass('temp-unwhite');
+        //Resume link styles
+        $("#Resume-link").toggleClass('active');
+        $("#polyline5").toggleClass('active');
+      } 
+      else if (!portfolioMenuOpen && resumeActive) {
+        //do nothing
+      }
+      else if (!portfolioMenuOpen && contactActive) {
+        $("#Resume-link").toggleClass('active');
+        $("#polyline5").toggleClass('active');
+        $("#Contact-link").toggleClass('temp-unwhite');
+        $("#polyline6").toggleClass('temp-unsticky');
+      }
+      else if (!portfolioMenuOpen && portfolioActive) {
+        //hover text color taken care of by CSS
+        $('#polyline5').toggleClass('active');
+      }
+      else {
+        console.log('error, a condition wasnt found for that');
       }
     });
+
+    $("#Contact-link").hover(function(){
+      if (portfolioMenuOpen && contactActive) {
+        //these link styles
+        $("#Contact-link").toggleClass('temp-unwhite');
+        $("#polyline6").toggleClass('temp-unsticky');
+        //portfolio link styles
+        $("#portfolio-link").toggleClass('temp-unwhite');
+        $("#polyline4").toggleClass('temp-unsticky');
+        $("#sub-menu-container li a").toggleClass('temp-unwhite');
+      }
+      else if ((portfolioMenuOpen && resumeActive) ||
+              (portfolioMenuOpen && portfolioActive)) {
+        //portfolio link styles
+        $("#portfolio-link").toggleClass('temp-unwhite');
+        $("#polyline4").toggleClass('temp-unsticky');
+        $("#sub-menu-container li a").toggleClass('temp-unwhite');
+        //this link styles
+        $("#Contact-link").toggleClass('active');
+        $("#polyline6").toggleClass('active');
+      }
+      else if (!portfolioMenuOpen && contactActive) {
+        //do nothing
+      }
+      else if (!portfolioMenuOpen && resumeActive) {
+        $("#Contact-link").toggleClass('active');
+        $("#polyline6").toggleClass('active');
+        $("#Resume-link").toggleClass('temp-unwhite');
+        $("#polyline5").toggleClass('temp-unsticky');
+      }
+      else if (!portfolioMenuOpen && portfolioActive) {
+        $("#polyline6").toggleClass('active');
+      }
+      else {
+        console.log('error, a condition wasnt found for that');
+      }
+    });
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // $("#portfolio-link").click(function(e){
+    //   e.preventDefault();
+    //   $(this).toggleClass('white');
+    //   $("#sub-menu-container").toggleClass('open'); 
+    //   $("#polyline4").toggleClass('sticky');
+    //   $("#sub-menu-container li a").toggleClass('white');
+    //   if ($("#polyline4").hasClass('sticky')) {
+    //     portfolioMenuOpen = true;
+    //     // console.log('turn text and lines green');
+    //     $("#polyline5").addClass('temp-unsticky');
+    //     $("#Resume-link").addClass('temp-unwhite');
+    //     $("#polyline6").addClass('temp-unsticky');
+    //     $("#Contact-link").addClass('temp-unwhite');
+    //     console.log('temp classes added onto resume and contact');
+    //   } else {
+    //     portfolioMenuOpen = false;
+    //     // $("#polyline5").removeClass('temp-unsticky');
+    //     // $("#Resume-link").removeClass('temp-unwhite');
+    //     // $("#polyline6").removeClass('temp-unsticky');
+    //     // $("#Contact-link").removeClass('temp-unwhite');
+    //     console.log('temp classes removed from resume and contact');
+    //   }
+    //   console.log('is menu open? : ' + Boolean(portfolioMenuOpen));
+    // });
+
+
+    // $("#portfolio-link").hover(function(){
+    //   console.log('on hover is menu open?:' + Boolean(portfolioMenuOpen));
+    //   if ($("#polyline4").hasClass('sticky')) {
+    //     //console.log('polyline is sticky and returned false');
+    //   } else {
+    //     //console.log('polyline is not stuck open so we can animate it');
+    //     $("#polyline4").toggleClass('active');
+    //     //$("#polyline5").toggleClass('temp-unsticky');
+    //     //$("#polyline6").toggleClass('temp-unsticky');
+    //   }
+
+    //   if ($('li[data-menuanchor="Resume"]').hasClass('active') && !portfolioMenuOpen) {
+    //     $("#polyline5").toggleClass('temp-unsticky');
+    //     $("#Resume-link").toggleClass('temp-unwhite');
+    //     console.log('resume has active class');
+    //   } 
+    //   // else if ($('li[data-menuanchor="Resume"]').hasClass('active') && !portfolioMenuOpen) {
+        
+    //   // }
+    //   else if ($('li[data-menuanchor="Contact"]').hasClass('active')){
+    //     $("#polyline6").toggleClass('temp-unsticky');
+    //     $("#Contact-link").toggleClass('temp-unwhite');
+    //     console.log('contact has active class');
+    //   } else {
+
+    //   }
+  
+    // });
+
+
+    // $("#Resume-link").hover(function(){
+    //   if (portfolioMenuOpen) {
+    //     //actual changes to this hover
+    //     $("#polyline5").toggleClass('temp-unsticky');
+    //     $("#Resume-link").toggleClass("temp-unwhite");
+    //     //changes to portfolio
+    //     $("#polyline4").toggleClass('temp-unsticky');
+    //     $("#portfolio-link").toggleClass('temp-unwhite');
+    //     $("#sub-menu-container li a").toggleClass('temp-unwhite');
+    //   }
+    //   // if ($('li[data-menuanchor="Contact"]').hasClass('active')){
+
+    //   //   $("#polyline5").toggleClass('active');
+    //   //   $("#Contact-link").toggleClass('temp-unwhite');
+    //   //   $("#polyline6").toggleClass('temp-unsticky');
+    //   // }
+    // });
+
+    // $("#Contact-link").hover(function(){
+    //   if (portfolioMenuOpen) {
+    //     //actual changes to this hover
+    //     $("#polyline6").toggleClass('temp-unsticky active'); //have to add the active class because there is no active on it by default
+    //     $("#Contact-link").toggleClass("temp-unwhite");
+    //     //changes to portfolio
+    //     $("#polyline4").toggleClass('temp-unsticky');
+    //     $("#portfolio-link").toggleClass('temp-unwhite');
+    //     $("#sub-menu-container li a").toggleClass('temp-unwhite');
+    //   }
+    // });
+    
+
+
+    // $("#Resume-link, #Contact-link").mouseout(function(){
+    //   if ($("#sub-menu-container").hasClass('open')) {
+    //     $("#portfolio-link").addClass('white');
+    //     $("#polyline4").addClass('active sticky');
+    //     $("#sub-menu-container li a").addClass('white');
+    //   } else {
+    //     return false;
+    //   }
+    // });
+
+
+    //////////////////////////////////////////////////////////
 
     //need functionality so that when the links from the menu are clicked (that aren't the portfolio links), they clear out an 'open state on the portfolio'. The active states native to fullpage will govern the look of the active states of the submenu and and the main menu. Everytime the links are clicked, run a function to check active states and set them accordingly. Will involve modifying style sheets.
+    //on change event whether it be clicking a nav item or scrolling, do function
+        //clear active states.
+        //check to see if portfolio or children are active (resume is not active, contact is not active and portfolio has an open state). 
+        //if they are not, remove all the portfolio active states. 
+        //check to see if resume is active, if so, add white color to line
+        //check to see if contact is active, if so, add white color to line
 
+    //hovering on any clickable link will temporarily make everything else blue, but coming off hover will return the states to the way they were.
+
+    //  var resetState = function() {
+    //   //on change
+
+    //   //if it belongs to portfolio, keep all portfolio states active. 
+    //   //if it's resume, add line active state to line 5, remove line active state to contact, remove active states to portfolio. 
+    //   //if it's contact, add line active state to line 6, remove line active state to resume, remove active states to portfolio.
+    //   //console.log(Boolean($('li[data-menuanchor="Resume"]').hasClass('active')));
+    //   //console.log(Boolean($('li[data-menuanchor="Contact"]').hasClass('active')));
+    // }
+  
+    //resetState();
 
   }, percentDoneTimeSegment*numSegments);
 
 
-
+ 
 
 
   // $(window).bind('mousewheel DOMMouseScroll', function(e){ 

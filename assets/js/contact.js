@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  console.log('contact script is active');
+  //console.log('contact script is active');
   //social media icons on contact page
   $(".social-links a").hover(function(){
     $(this).toggleClass("hover");

@@ -20,11 +20,53 @@ $(document).ready(function(){
     	}
     });
 
-	//FULLPAGE OPTIONS
+    //resets view of the active state in the menu on anchor click or fullpage navigation.
+    var resetState = function(){
+      //removes any temp or active classes that may be present.
+      $("#polyline4, #polyline5, #polyline6").removeClass('temp-unsticky sticky active');
+      $("#Resume-link, #Contact-link, #portfolio-link").removeClass('temp-unwhite white');
+      $("#sub-menu-container").removeClass('open');
+      $("#sub-menu-container li a").removeClass('white');
+    
+      if ($('#sub-menu li[data-menuanchor]').hasClass('active')) {
+        console.log('portfolio link is now active');
+        //$("#polyline5").removeClass('active');
+        //$("#polyline6").removeClass('active');
+      } else if ($('li[data-menuanchor="Resume"]').hasClass('active')) {
+        console.log('resume link is now active');
+        $("#polyline5").addClass('active');
+        // $("#portfolio-link").removeClass('white');
+        // $("#sub-menu-container").removeClass('open');
+        // $("#sub-menu-container li a").removeClass('white');
+      } else if ($('li[data-menuanchor="Contact"]').hasClass('active')) {
+        console.log('contact link is now active');
+        $("#polyline6").addClass('active');
+        // $("#portfolio-link").removeClass('white');
+        // $("#sub-menu-container").removeClass('open');
+        // $("#sub-menu-container li a").removeClass('white');
+      } else {
+        return false;
+      }
+      //if it belongs to portfolio, keep all portfolio states active. 
+      //if it's resume, add line active state to line 5, remove line active state to contact, remove active states to portfolio. 
+      //if it's contact, add line active state to line 6, remove line active state to resume, remove active states to portfolio.
+     // console.log(Boolean($('#sub-menu li[data-menuanchor]').hasClass('active')));
+      //console.log(Boolean($('li[data-menuanchor="Resume"]').hasClass('active')));
+     // console.log(Boolean($('li[data-menuanchor="Contact"]').hasClass('active')));
+      // $("#polyline4").removeClass('sticky active');
+      // $("#portfolio-link").removeClass('white');
+      // $("#sub-menu-container").removeClass('open');
+      // $("#sub-menu-container li a").removeClass('white');
+      //console.log('removed classes');
+      console.log('reset has run');
+    }
+
+	//FULLPAGE OPTIONS AND METHODS
    	$('#fullpage').fullpage({
 	    easingcss3: 'cubic-bezier(0.85, 0, 0.17, 0.85)',
 	    sectionsColor: ['white','white', 'white', 'white', 'white', '#303030', 'white'],
 	    scrollOverflow: true, //for resumé section
+      scrollingSpeed: 700,
 	    //anchors: myAnchors, //using data-anchor attribute on HTML instead.
 	    menu: '#menu',
       onLeave: function(index) {
@@ -37,14 +79,14 @@ $(document).ready(function(){
           //projet image moves to right
           leftSectionSection.children('.project-image').removeClass('active');
         } else if (leftSection.hasClass('resume')) {
-          console.log('left resume section');
+          //console.log('left resume section');
           leftSection.find('.paper').removeClass('active');
         } else if (leftSection.hasClass('contact')) {
           leftSectionSection.find('h2').removeClass('active');
           leftSectionSection.find('.social-icon').removeClass('loaded');
         }
+       // console.log('stuff - this doesnt run on page load unless going to specific section');
       },
-
 	    afterLoad: function(anchorLink, index){
   	    //change location blurb
   			var loadedSection = $(this);
@@ -53,9 +95,9 @@ $(document).ready(function(){
         $('.location-blurb p').css('color', 'black');
   			if (loadedSection.hasClass('project')){
   				anchorLink = '<span class="small-text"> Portfolio ' + thisPageIndex + '/' + numProjects + '</span><br>' + anchorLink;
-        //animations
-        loadedSectionSection.children('.project-info').addClass('active');
-        loadedSectionSection.children('.project-image').addClass('active');
+          //animations
+          loadedSectionSection.children('.project-info').addClass('active');
+          loadedSectionSection.children('.project-image').addClass('active');
   			} else if (loadedSection.hasClass('resume')) {
           $('.location-blurb p').css('color', 'white');
           loadedSection.find('.paper').addClass('active');
@@ -64,10 +106,13 @@ $(document).ready(function(){
           loadedSectionSection.find('h2').addClass('active');
           loadedSectionSection.find('.social-icon').addClass('loaded');
           console.log('contact');
-
         }
   			$('.location-blurb p').html(anchorLink);
         $('.location-blurb').removeClass('loc-hide');
+        //have to use a timer in accordance with the animation speed (or any speed apparently), otherwise the silentMoveTo method doesn't read the right active state (although it reads fine when scrolling).
+        setTimeout(function(){
+          resetState();
+        }, 700);
   		}
     });
 
@@ -89,10 +134,11 @@ $(document).ready(function(){
     		$.fn.fullpage.setKeyboardScrolling(false, 'all');
     	}
   	});
+    // MENU NAVIGATION CLICK IN GENERAL
   	$('.navigation li a').click(function(e){
   		e.preventDefault();
       if ($(this).is('#portfolio-link')) {
-        console.log('portfolio link');
+        //console.log('portfolio link');
         return false;
       } 
       else {
@@ -100,6 +146,7 @@ $(document).ready(function(){
         //$("polyline").removeClass('active sticky');
         $('.icon-container').show();
     		$.fn.fullpage.silentMoveTo($(this).parent().attr('data-menuanchor'));
+       
         $.fn.fullpage.setAllowScrolling(true, 'all');
         $.fn.fullpage.setKeyboardScrolling(true, 'all');
     		$('#landing').removeClass('window-open');
@@ -108,5 +155,5 @@ $(document).ready(function(){
         $('.location-blurb').removeClass('loc-hide');
       }
   	});
- 
+    
 });

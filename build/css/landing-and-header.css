@@ -20,17 +20,9 @@
   margin-bottom: 4%;
 }
 #landing .name-box {
-  text-align: right;
-  font-family: 'Playfair Display';
-  font-size: 90px;
   height: 100%;
   color: #00B2A3;
   position: relative;
-}
-#landing .name-box svg {
-  position: absolute;
-  right: 0;
-  bottom: 0;
 }
 #landing .name-box p {
   position: absolute;
@@ -40,6 +32,11 @@
 }
 #landing .name-box span {
   font-size: 70px;
+}
+#landing .name-box .align-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 #landing .description-box {
   position: relative;
@@ -51,6 +48,9 @@
   bottom: 0;
   font-weight: 300;
   color: white;
+}
+#landing .description-box p#description span {
+  font-size: 24px;
 }
 #landing .description-box p#counter {
   bottom: 0;
@@ -88,6 +88,11 @@
 #landing #line-group svg#menuline2 polyline.active,
 #landing #line-group svg#menuline2 polyline.sticky {
   stroke-dashoffset: 0;
+  transition-duration: .4s;
+}
+#landing #line-group svg#menuline2 polyline.temp-unsticky {
+  stroke-dasharray: 300px !important;
+  stroke-dashoffset: 300px !important;
 }
 #landing ul#menu {
   visibility: hidden;
@@ -109,11 +114,17 @@
 #landing ul#menu li:first-child {
   margin-left: 0px;
 }
+#landing ul#menu li.active a {
+  color: white !important;
+}
 #landing ul#menu li a#portfolio-link {
   cursor: pointer;
 }
 #landing ul#menu li a#portfolio-link.white {
   color: white;
+}
+#landing ul#menu li a.temp-unwhite {
+  color: #00B2A3 !important;
 }
 #landing ul#menu li a:hover {
   color: white;
@@ -136,11 +147,17 @@
 #landing ul#menu li ul#sub-menu #sub-menu-container li {
   margin-left: 60px;
 }
+#landing ul#menu li ul#sub-menu #sub-menu-container li.active a {
+  color: white !important;
+}
 #landing ul#menu li ul#sub-menu #sub-menu-container li a {
   transition-duration: .4s;
 }
 #landing ul#menu li ul#sub-menu #sub-menu-container li a.white {
   color: rgba(255, 255, 255, 0.6);
+}
+#landing ul#menu li ul#sub-menu #sub-menu-container li a.temp-unwhite {
+  color: #00B2A3 !important;
 }
 #landing ul#menu li ul#sub-menu #sub-menu-container li a:hover {
   color: #ffffff;
