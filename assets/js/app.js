@@ -1,8 +1,9 @@
 $(document).ready(function(){
 
+    //$('.icon-container').hide();
+    //$('#landing-container').addClass('window-open'); //This is turned off because it's set now in the HTML. Was moved from the bottom of the ready function.
 
-
-	//CREATE HTML MENU FROM EACH DATA-ANCHOR
+     //CREATE HTML MENU FROM EACH DATA-ANCHOR
     $.each($('.section'), function(){
     	var dataAnchor = $(this).attr('data-anchor');
       var dataAnchorNoDash = dataAnchor.replace(/-/gm, " ");
@@ -36,78 +37,115 @@ $(document).ready(function(){
       resumeActive = false;
 
       if ($('#sub-menu li[data-menuanchor]').hasClass('active')) {
-        console.log('portfolio link is now active');
+        //console.log('portfolio link is now active');
         portfolioActive = true;
       } else if ($('li[data-menuanchor="Resume"]').hasClass('active')) {
-        console.log('resume link is now active');
+        //console.log('resume link is now active');
         resumeActive = true;
         $("#polyline5").addClass('active');
       } else if ($('li[data-menuanchor="Contact"]').hasClass('active')) {
-        console.log('contact link is now active');
+        //console.log('contact link is now active');
         contactActive = true;
         $("#polyline6").addClass('active');
       } else {
         return false;
       }
-      console.log('reset has run');
-      console.log(portfolioActive);
-      console.log(resumeActive);
-      console.log(contactActive);
+      // console.log('reset has run');
     }
 
-	//FULLPAGE OPTIONS AND METHODS
+	   //FULLPAGE OPTIONS AND EVENTS
    	$('#fullpage').fullpage({
+      licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
 	    easingcss3: 'cubic-bezier(0.85, 0, 0.17, 0.85)',
 	    sectionsColor: ['white','white', 'white', 'white', 'white', '#303030', 'white'],
+      slidesNavigation: true,
+      controlArrows: false,
 	    scrollOverflow: true, //for resumé section
-      	scrollingSpeed: 700,
+      scrollingSpeed: 700,
 	    //anchors: myAnchors, //using data-anchor attribute on HTML instead.
 	    menu: '#menu',
-      	onLeave: function(index) {
+      	onLeave: function(origin, destination, direction) {
+          //console.log("ON LEAVE");
+          console.log(origin);
+          //console.log("destination is: " + destination.anchor);
 	        $('.location-blurb').addClass('loc-hide');
-	        var leftSection = $(this);
-	        var leftSectionSection = $(this).find('section');
+	        var leftSection = $(origin.item);
+          //the section-slide-1 class either goes on the section tag or the slide tag, depending if the project has slides or not.
+	        //var leftSectionSection = leftSection.find('.section-slide-1');
+          //console.log(leftSectionSection);
 	        if (leftSection.hasClass('project')) {
 	          //project info moves to left
-	          leftSectionSection.children('.project-info').removeClass('active');
+	          leftSection.find('.project-info').removeClass('active');
 	          //project image moves to right
-	          leftSectionSection.children('.project-image').removeClass('active');
+	          leftSection.find('.project-image').removeClass('active');
 	        } else if (leftSection.hasClass('resume')) {
 	          //console.log('left resume section');
-	          leftSection.find('.paper').removeClass('active');
-	        } else if (leftSection.hasClass('contact')) {
-	          leftSectionSection.find('h2').removeClass('active');
-	          leftSectionSection.find('.social-icon').removeClass('loaded');
-	        }
+              leftSection.find('.paper').removeClass('active');
+	          } else if (leftSection.hasClass('contact')) {
+	            leftSection.find('.social-links h2').removeClass('active');
+              leftSection.find('.social-icon').removeClass('loaded');
+              leftSection.find('.about-site').removeClass('active');
+              leftSection.find('.about-site, .about-site .text-group').removeClass('active');
+	          }
 	    },
-	    afterLoad: function(anchorLink, index){
-  			var loadedSection = $(this);
-       		var loadedSectionSection = $(this).find('section');
-  			var thisPageIndex = index;
-            $('.location-blurb p').css('color', 'black');
+	    afterLoad: function(origin, destination, direction){
+          //console.log("AFTER LOAD");
+          //console.log("origin is: " + origin.anchor);
+          //console.log("destination is: " + destination.anchor);
+          //console.log("---------------------------------------------");
+        var loadedSection = $(destination.item);
+        var locationBlurb;
+        //console.log(loadedSection);
+        //console.log(origin.index);
+        $('.location-blurb p').css('color', 'black');
   			if (loadedSection.hasClass('project')){
-  				anchorLink = '<span class="small-text"> Portfolio ' + thisPageIndex + '/' + numProjects + '</span><br>' + anchorLink;
+          //console.log('has class project');
+  				locationBlurb = '<span class="small-text"> Portfolio ' + (destination.index+1) + '/' + numProjects + '</span><br>' + destination.anchor.replace(/-/gm, " ");
           		//animations
-          		loadedSectionSection.children('.project-info').addClass('active');
-          		loadedSectionSection.children('.project-image').addClass('active');
+          		loadedSection.find('.project-info').addClass('active');
+          		loadedSection.find('.project-image').addClass('active');
   			} 
   			else if (loadedSection.hasClass('resume')) {
           		$('.location-blurb p').css('color', 'white');
+              locationBlurb = 'Resume';
           		loadedSection.find('.paper').addClass('active');
+              console.log(direction);
         	} 
         	else if (loadedSection.hasClass('contact')) {
           		//animations
-          		loadedSectionSection.find('h2').addClass('active');
-          		loadedSectionSection.find('.social-icon').addClass('loaded');
+              locationBlurb = 'Contact';
+          		loadedSection.find('.social-links h2').addClass('active');
+          		loadedSection.find('.social-icon').addClass('loaded');
+              loadedSection.find('.about-site, .about-site .text-group').addClass('active');
           		console.log('contact');
         	}
-  			$('.location-blurb p').html(anchorLink);
+  			  $('.location-blurb p').html(locationBlurb);
         	$('.location-blurb').removeClass('loc-hide');
         	//have to use a timer in accordance with the animation speed (or any speed apparently), otherwise the silentMoveTo method doesn't read the right active state (although it reads fine when scrolling).
         	setTimeout(function(){
           		resetState();
         	}, 700);
-  		}
+  		},
+      afterSlideLoad: function(section, origin, destination, direction){
+        var loadedSlide = $(this);
+        console.log(loadedSlide);
+        console.log(section);
+        console.log(origin);
+        console.log(destination);
+        console.log(direction);
+        $(".slide-image-1, .slide-image-2, .slide-image-3, .text-group-appearing").addClass('active');
+        $(".text-group, .slide-image-single").addClass('active');
+      },
+      onSlideLeave: function(section, origin, destination, direction) {
+        // $(".slide-image-1, .slide-image-2, .slide-image-3, .text-group-appearing").removeClass('active');
+        $(".text-group, .slide-image-single").removeClass('active');
+        var loadedSlide = $(this);
+        console.log(loadedSlide);
+        console.log(section);
+        console.log(origin);
+        console.log(destination);
+        console.log(direction);
+      }
     });
 
     //MENU ICON CLICK FUNCTIONALITY
@@ -116,13 +154,13 @@ $(document).ready(function(){
     	$('.menu-icon .inner').toggleClass('open');
       	$('.location-blurb').toggleClass('loc-hide');
     	if (!($('.menu-icon .inner').hasClass('open'))) {
-    		$('#landing').removeClass('window-open');
+    		$('#landing-container').removeClass('window-open');
     		//$('.location-blurb p').css('display', 'block');
     		$.fn.fullpage.setAllowScrolling(true, 'all');
         $.fn.fullpage.setKeyboardScrolling(true, 'all');
     		//keyboard scrolling true
     	} else {
-    		$('#landing').addClass('window-open');
+    		$('#landing-container').addClass('window-open');
     		//$('.location-blurb p').css('display', 'none');
         $.fn.fullpage.setAllowScrolling(false, 'all');
     		$.fn.fullpage.setKeyboardScrolling(false, 'all');
@@ -143,7 +181,7 @@ $(document).ready(function(){
        
         $.fn.fullpage.setAllowScrolling(true, 'all');
         $.fn.fullpage.setKeyboardScrolling(true, 'all');
-    	$('#landing').removeClass('window-open');
+    	$('#landing-container').removeClass('window-open');
     	$('.menu-icon .inner').removeClass('open');
     	$('.location-blurb p').css('display', 'block');
         $('.location-blurb').removeClass('loc-hide');
@@ -279,17 +317,71 @@ $(document).ready(function(){
       }
     });
 
-    
+    //GENERAL BUTTON CLICKS AND EVENTS
+    $("#explore_slides_1").click(function(){
+      $.fn.fullpage.moveTo("Kattare", 1);
+    });
+
+     //social media icons on contact page
+    $(".social-links a").hover(function(){
+      $(this).toggleClass("hover");
+    });
+
+    //email link bot obfuscation
+    function obfuscate(){
+      var unreadableLink = $("#email-icon").attr('href');
+      unreadableLink = unreadableLink.replace('mailto', 'failto');
+      unreadableLink = unreadableLink.replace(/geoff/gi, 'first');
+      unreadableLink = unreadableLink.replace('@', ':::');
+      unreadableLink = unreadableLink.replace('powell', 'last')
+      return unreadableLink;
+    }
+
+    function deobfuscate(){
+      var readableLink = $("#email-icon").attr('href');
+      if (readableLink == "#") { //href loads empty
+        console.log('readablelink is blank');
+        var otliam = ":otliam";
+        var first = "geoff";
+        var last = "powell";
+        var character = "@";
+        var tld = "ten.";
+        otliam = otliam.split('').reverse().join('');
+        tld = tld.split('').reverse().join('');
+        readableLink = otliam + first + character + first + last + tld;
+        return readableLink;
+      }
+      else {
+        readableLink = readableLink.replace('failto', 'mailto');
+        readableLink = readableLink.replace(/first/gi, 'geoff');
+        readableLink = readableLink.replace(':::', '@');
+        readableLink = readableLink.replace('last', 'powell');
+        return readableLink;
+        console.log('readable link has other');
+      }
+    }
+
+    //email hover on contact page to write out the href 
+    $("#email-icon").mouseover(function() {
+      $(this).attr('href', deobfuscate());
+      console.log($("#email-icon").attr('href'));
+    });
+
+    $("#email-icon").mouseout(function() {
+      $(this).attr('href', obfuscate());
+      console.log($("#email-icon").attr('href'));
+    });
+
+    //SET SCROLL TO FALSE ON READY
+  	//$.fn.fullpage.setAllowScrolling(false, 'all');
+  	//$.fn.fullpage.setKeyboardScrolling(false, 'all');
 
 
-  	//////////////////////LANDING PAGE ANIMATIONS AND TIMINGS///////////////////////////////
+});
 
+/////////////////////LANDING PAGE ANIMATIONS AND TIMINGS///////////////////////////////
 
-  	$('.icon-container').hide();
-  	$('#landing').addClass('window-open');
-  	$.fn.fullpage.setAllowScrolling(false, 'all');
-  	$.fn.fullpage.setKeyboardScrolling(false, 'all');
-
+$(window).load(function(){
 
   var r1 = Snap.select('#r1');
   var e1 = Snap.select('#e1');
@@ -326,7 +418,7 @@ $(document).ready(function(){
   var l4 = Snap.select('#l4');
 
   //HOW FAST 'RETICULATING SPLINES' TRANSITIONS TO 'GEOFF' AFTER THE LINES ARE DONE 
-  var nameTransitionSpeed = 500;
+  var nameTransitionSpeed = 700;
   var pullDownMatrix = new Snap.Matrix();
   pullDownMatrix.translate(0,50);
   var toGeoffPowell = function(){
@@ -358,9 +450,9 @@ $(document).ready(function(){
   var polyline2 = lineSVG.select('#polyline2');
   var polyline3 = lineSVG.select("#polyline3");
   //each line time has to be stated explicitly here (time each line takes to animate) 
-  var line1Time = 500;
-  var line2Time = 500;
-  var line3Time = 500;
+  var line1Time = 1200;
+  var line2Time = 1200;
+  var line3Time = 1200;
   var totalLineTime = line1Time + line2Time + line3Time;
 
   function runNameAnimation(){
@@ -381,7 +473,7 @@ $(document).ready(function(){
         "stroke-dasharray": 300,
         "stroke-dashoffset": 300,
         stroke: 'url(#menu-line-gradient)'
-      }).animate({'stroke-dashoffset': 0}, line2Time, mina.linear, runLine3);
+      }).animate({'stroke-dashoffset': 0}, line2Time, mina.easeinout, runLine3);
     }
     var runLine3 = function(){
       //console.log('line 3 running');
@@ -390,7 +482,7 @@ $(document).ready(function(){
         "stroke-dasharray": 300,
         "stroke-dashoffset": 300,
         stroke: 'url(#menu-line-gradient)'
-      }).animate({'stroke-dashoffset': 0}, line3Time, mina.easeout, toGeoffPowell);
+      }).animate({'stroke-dashoffset': 0}, line3Time, mina.easeinout, toGeoffPowell);
     }
     runLine1();
   }
@@ -435,8 +527,6 @@ $(document).ready(function(){
     $(".description-box #counter").animate({'opacity': 0}, nameTransitionSpeed);
     $(".description-box #description").animate({'opacity': 1}, nameTransitionSpeed*3);
   }, percentDoneTimeSegment*numSegments);
-    
-
-    
 
 });
+

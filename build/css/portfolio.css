@@ -23,8 +23,10 @@ PORTFOLIO STYLES
 }
 .project .project-info h1 {
   font-family: 'Playfair Display', Arial, sans-serif;
+  font-weight: 700;
   white-space: nowrap;
   margin-bottom: 24px;
+  margin-bottom: 1.75vw;
 }
 .project .project-info.active {
   opacity: 1;
@@ -52,14 +54,22 @@ PORTFOLIO STYLES
   border-bottom: 1px solid #007f74;
   padding-top: 12px;
   padding-bottom: 12px;
+  padding-bottom: .88vw;
   margin-bottom: 48px;
+  margin-bottom: 3.51vw;
 }
 .project .skills-used span {
   font-size: 14px;
+  font-size: 1.02vw;
   color: #007f74;
 }
 .project .btn {
   margin-bottom: 16px;
+  margin-bottom: 1.17vw;
+}
+.project .btn.bottom {
+  margin-top: 24px;
+  margin-bottom: 1.75vw;
 }
 .project .project-description p {
   padding-left: 13.63636364%;
@@ -69,9 +79,11 @@ PORTFOLIO STYLES
   color: #004c46;
   font-family: 'Montserrat', 'Gill Sans', Arial, sans-serif;
   font-size: 21px;
+  font-size: 1.53vw;
   position: absolute;
   bottom: 0;
   right: -24px;
+  right: 1.75vw;
 }
 /*ids for each of the portfolio pieces*/
 /*not shown in mobile sizes*/

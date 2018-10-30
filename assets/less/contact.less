@@ -10,37 +10,43 @@
     //padding-top: 6%;
     height: 100%;
   }
-  
 }
 
-fieldset {
-  border: none;
-}
+// fieldset {
+//   border: none;
+// }
 
-textarea, input {
-  border: 1px solid @brand-blend-dark;
-  padding: 12px;
-  margin: 12px 0;
-}
+// textarea, input {
+//   border: 1px solid @brand-blend-dark;
+//   padding: 12px;
+//   padding: .88vw;
+//   margin: 12px 0;
+//   margin: .88vw 0;
+// }
 
-textarea {
-  font-family: @font-primary;
-  vertical-align: middle;
-}
+// textarea {
+//   font-family: @font-primary;
+//   vertical-align: middle;
+// }
 
-textarea:focus, input:focus {
-  border: 1px solid @brand-blend;
-  outline: 1px solid lighten(@brand-blend, 10%);
-}
+// textarea:focus, input:focus {
+//   border: 1px solid @brand-blend;
+//   outline: 1px solid lighten(@brand-blend, 10%);
+// }
 
-input#name, input#email, textarea#message {
- width: 65%;
-}
+// input#name, input#email, textarea#message {
+//  width: 65%;
+// }
 
+// @keyframes pulse {
+//   0% {width: 30px; height: 30px; background-size: 30px 30px;}
+//   50% {transform: scale(1.4); transform-origin: center; margin-left: 12px;}
+//   100% {width: 30px; height: 30px; background-size: 30px 30px;}
+// }
 @keyframes pulse {
-  0% {width: 30px; height: 30px; background-size: 30px 30px;}
-  50% {transform: scale(1.4); transform-origin: center; margin-left: 12px;}
-  100% {width: 30px; height: 30px; background-size: 30px 30px;}
+  0% {width: 2.12vw; height: 2.12vw; background-size: 2.12vw 2.12vw;}
+  50% {transform: scale(1.4); transform-origin: center; margin-left: .88vw;}
+  100% {width: 2.12vw; height: 2.12vw; background-size: 2.12vw 2.12vw;}
 }
 
 .social-links {
@@ -48,8 +54,10 @@ input#name, input#email, textarea#message {
   h2 {
     color: @brand-blend-darkest;
     font-family: @font-tertiary;
-    margin-bottom: 2em;
+    font-weight: 700;
+    margin-bottom: 1em;
     font-size: 36px;
+    font-size: 2.64vw;
     // background: linear-gradient(-45deg, #303030, @brand-blend);
     // -webkit-background-clip: text;
     // -webkit-text-fill-color: transparent;
@@ -57,6 +65,7 @@ input#name, input#email, textarea#message {
     text-align: right;
     position: relative;
     right: 100px;
+    right: 7.33vw;
     transition-duration: .3s;
     transition-timing-function: cubic-bezier(0.85, 0, 0.45, 1.4);
     &.active {
@@ -70,10 +79,12 @@ input#name, input#email, textarea#message {
     float: right;
     clear: both;
     margin-bottom: 16px;
+    margin-bottom: 1.17vw;
     position: relative;
     transition-duration: .3s;
     &.hover:after{ 
       margin-left: 12px;
+      margin-left: .88vw;
       transform: scale(1.4);
       transform-origin: center;
     } 
@@ -85,10 +96,10 @@ input#name, input#email, textarea#message {
       animation-timing-function: ease-in-out;
       animation-delay: .6s;
     }
-    &.loaded#linkedin-icon:after {
+    &.loaded#github-icon:after {
       animation-delay: 1s;
     }
-    &.loaded#email-icon:after {
+    &.loaded#linkedin-icon:after {
       animation-delay: 1.4s;
     }
 
@@ -97,13 +108,47 @@ input#name, input#email, textarea#message {
       display: inline-block;
       margin-left: 8px;
       width: 30px;
+      width: 2.12vw;
       height: 30px;
+      height: 2.12vw;
       background-repeat: no-repeat;
       position: relative;
       top: 10px;
+      top: .73vw;
       background-size: 30px 30px;
+      background-size: 2.12vw 2.12vw;
       transition-duration: .3s;
     } 
+  }
+}
+.about-site {
+  height: 100%;
+  border-left: 1px solid white;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(0.85, 0, 0.45, 1.4);
+  position: relative;
+  &.active {
+    border-left: 1px solid @brand-blend;
+  }
+  .text-group { 
+    position: relative;
+    opacity: 0;
+    right: -100px;
+    right: -7.33vw;
+    transition-duration: .3s;
+    transition-timing-function: cubic-bezier(0.85, 0, 0.45, 1.4);
+    &.active {
+      opacity: 1;
+      right: 0;
+    }
+    h2 {
+    color: @brand-blend-darkest;
+    font-family: @font-tertiary;
+    font-weight: 700;
+    margin-bottom: 1.6em;
+    font-size: 36px;
+    font-size: 2.64vw;
+    }
   }
 }
 
@@ -116,41 +161,46 @@ input#name, input#email, textarea#message {
 #linkedin-icon:after {
   background-image: url('../img/linkedin-icon.png');
 }
- span.input-validate {
-   display: inline-block;
-   width: 10%;
-   height: 20px;
-   .pass, .fail {
-     display: block;
-     width: 21px;
-     margin-left: 12px;
-     height: 18px;
-     background-image: url('../img/check-mark.png');
-     background-size: cover;
-     background-repeat: no-repeat;
-     transition-duration: .3s;
-   }
-   .fail {
-     background-image: url('../img/red-x.png');
-   }
- }
+// span.input-validate {
+//  display: inline-block;
+//  width: 10%;
+//  height: 20px;
+//  height: 1.46vw;
+//  .pass, .fail {
+//    display: block;
+//    width: 21px;
+//    width: 1.5vw;
+//    margin-left: 12px;
+//    margin-left: .88vw;
+//    height: 18px;
+//    height: 1.31vw;
+//    background-image: url('../img/check-mark.png');
+//    background-size: cover;
+//    background-repeat: no-repeat;
+//    transition-duration: .3s;
+//  }
+//  .fail {
+//    background-image: url('../img/red-x.png');
+//  }
+// }
 
-@keyframes buttonin {
-  0% {background-color: blue;}
-  50% {background-color: red;}
-  75% {background-color: black;}
-  100% {background-color: pink;}
-}
+// @keyframes buttonin {
+//   0% {background-color: blue;}
+//   50% {background-color: red;}
+//   75% {background-color: black;}
+//   100% {background-color: pink;}
+// }
 
-#submit-message {
-  margin-top: 16px;
-  // &.enabled {
-  //   animation-name: buttonin;
-  //   animation-duration: 10s;
-  //   animation-iteration-count: 3;
-  //   background-color: pink;
-  // }
-}
+// #submit-message {
+//   margin-top: 16px;
+//   margin-top: 1.17vw;
+//   // &.enabled {
+//   //   animation-name: buttonin;
+//   //   animation-duration: 10s;
+//   //   animation-iteration-count: 3;
+//   //   background-color: pink;
+//   // }
+// }
 
 // 	.social-icon-group {
 // 		text-align: center;

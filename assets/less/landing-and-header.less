@@ -9,8 +9,9 @@
 //   z-index: 400;
 // }
 
-#landing {
+#landing-container {
   width: 100%;
+  height: 100%;
   transform: translate3d(0,-100%,0);
   transition-duration: .4s;
   position: fixed;
@@ -18,6 +19,18 @@
   background: url('../img/oregon.jpg');
   background-size: cover;
   background-position: center;
+  height: 100%;
+  &.window-open {
+    transform: translate3d(0,0,0);
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(0.85, 0, 0.17, 0.85);
+  }
+}
+
+#landing {
+  max-width: 1365px;
+  margin: 0 auto;
+  z-index: 500;
   height: 100%;
   .paper {
     position: relative;
@@ -30,26 +43,9 @@
     margin-bottom: 4%;
   }
   .name-box {
-    // text-align: right;
-    // font-family: 'Playfair Display';
-    // font-size: 90px;
     height: 100%;
     color: @brand-blend;
     position: relative;
-    svg {
-      // position: absolute;
-      // right: 0;
-      // bottom: 0;
-    }
-    p {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      line-height: .9em;
-    }
-    span {
-      font-size: 70px;
-    }
     .align-bottom {
       position: absolute;
       bottom: 0;
@@ -60,28 +56,34 @@
     position: relative;
     height: 100%;
     p#description {
+      font-size: 16px;
       opacity: 0;
       position: absolute;
       bottom: 0;
       font-weight: 300;
       color: white;
+      margin-bottom: 0;
       & span {
         font-size: 24px;
+        //font-size: 1.02vw;
       }
     }
     p#counter {
       bottom: 0;
       right: 0;
       position: absolute;
+      margin-bottom: 0;
       font-family: 'playfair display';
       font-weight: 400;
       font-size: 100px;
+      //font-size: 7.32vw;
       line-height: 1.2em;
       color: @brand-blue-green;
     }
   }
   #line-group {
       width: 842px; //width of SVG group at normal size
+      //width: 61.68vw;
       display: block;
       margin: 0 auto;
       position: relative;
@@ -115,8 +117,10 @@
     visibility: hidden;
     opacity: 0;
     font-size: 24px;
+    //font-size: 1.75vw;
     font-weight: 400;
     letter-spacing: 1px;
+    //letter-spacing: .073vw;
     text-transform: uppercase;
     margin: 0 auto;
     text-align: center;
@@ -126,6 +130,7 @@
       display: inline-block;
       list-style: none;
       margin-left: 180px;
+      //margin-left: 13.18vw;
       &:first-child {
         margin-left: 0px;
       }
@@ -153,13 +158,16 @@
           opacity: 0;
           position: absolute;
           font-size: 16px;
+          //font-size: 1.17vw;
           top: 60px;
+          //top: 4.39vw;
           left: 0;
           width: 100%;
           left: -150%;
           transition-duration: .3s;
           &.open {
             font-size: 16px;
+            //font-size: 1.17vw;
             left: 0;
             opacity: 1;
           }
@@ -182,6 +190,7 @@
               }
             }
             margin-left: 60px;
+            //margin-left: 4.39vw;
               &:first-child {
               margin-left: 0;
             }
@@ -190,64 +199,68 @@
       }
     }
   }
-  &.window-open {
-    -webkit-transform: translate3d(0,0,0);
-    transition-duration: .4s;
-    transition-timing-function: cubic-bezier(0.85, 0, 0.17, 0.85);
-  }
+  // &.window-open {
+  //   -webkit-transform: translate3d(0,0,0);
+  //   transition-duration: .4s;
+  //   transition-timing-function: cubic-bezier(0.85, 0, 0.17, 0.85);
+  // }
 }
 
 .icon-container {
   position: fixed;
   top: 4%;
   right: (1.5 / @numcolumns) * 100%;
-  z-index: 500;
+  z-index: 501;
   height: 60px;
+  height: 4.39vw;
   overflow: hidden;
   .location-blurb {
     position: relative;
     transition-duration: .2s;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 16px;
+    margin-right: 1.17vw;
+    color: black;
     &.loc-hide {
       transform: translateX(212px);
+      transform: translateX(15.53vw);
     }
     p {
       position: relative;
       font-size: 18px;
+      font-size: 1.32vw;
       font-weight: 300;
       font-style: italic;
       text-align: right;
       line-height: 1.3em;
       span {
         font-size: 14px;
+        font-size: 1.02vw;
         font-style: normal;
       }
     }
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 16px;
-    color: black;
   }
 }
 //Menu icon (hamburger icon) styles and transforms
 .menu-icon {
   display: inline-block;
-  //border: 1px solid @almost-white;
   width: 60px;
   height: 60px;
+  width: 4.39vw;
+  height: 4.39vw;
   overflow: hidden;
   cursor: pointer;
-  //position: fixed;
-  // top: 4%;
-  // right: (1.5 / @numcolumns) * 100%;
-  //left: (2.5 / @numcolumns) * 100%;
-  
+
   &:before {
     content: '';
     position: absolute;
     //bottom: -49px;
     display: block;
     height: 120px;
+    height: 8.79vw;
     width: 60px;
+    width: 4.39vw;
     background: linear-gradient(30deg, @brand-blue-green, @brand-green-blue,@brand-blue-green);
     transition-duration: .18s;
   }
@@ -257,19 +270,24 @@
   }
   &:hover:before {
     transform: translateY(-60px);
+    transform: translateY(-4.39vw);
   }
   .inner {
     position: relative;
     top: 21px;
+    top: 1.53vw;
     margin: 0 auto;
     width: 24px;
+    width: 1.76vw;
     height: 17px;
+    height: 1.24vw;
     transition: .5s ease;
     span {
       display: block;
       position: absolute;
       height: 1px;
       width: 24px;
+      width: 1.76vw;
       background: @almost-white;
       opacity: 1;
       transition-delay: .3s;
@@ -280,10 +298,12 @@
       }
       &:nth-child(2) {
         top: 8px;
+        top: .58vw;
         transform-origin: left;
       }
       &:nth-child(3) {
         top: 16px;
+        top: 1.17vw;
         transform-origin: left;
       }
     }
@@ -293,6 +313,7 @@
     &.open span {
       &:nth-child(1) {
         width: 28px; //the final 'width' of the lines is some function of the X axis scaling down and the angle. Trial and error to find it. 
+        width: 2.05vw;
         transform: rotate(35.31deg);
       }
       &:nth-child(2) {
@@ -301,6 +322,7 @@
       }
       &:nth-child(3) {
         width:28px;
+        width: 2.05vw;
         transform: rotate(-35.31deg);
       }
     }

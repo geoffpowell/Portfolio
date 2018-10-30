@@ -1,3 +1,4 @@
+@import 'variables.less';
 /*********
 Overrides
 ***********/
@@ -6,6 +7,24 @@ h1, h2, h3, h4, h5, h6, p, a, ul, li {
 	margin: 0;
 	padding: 0;
 }
-// h1, h2, h3, h4, h5, h6 {
-// 	font-weight: normal;
-// }
+//fullpage overrides
+.fp-controlArrow {
+	&.fp-prev {
+		border-width: 20px 20px 20px 0;
+		border-color: transparent @brand-blend-darkest transparent transparent;
+	}
+	&.fp-next {
+		border-width: 20px 0 20px 20px;
+		border-color: transparent transparent transparent @brand-blend-darkest;
+	}
+}
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+	background: @brand-blend-darkest;
+}
+#fp-nav ul, .fp-slidesNav ul { //for some reason this isn't included in the fp css file
+	text-align: center;
+}
+
+.fp-scroller {
+	//height: 100%; //bug fix for non-webkit browsers.
+}

@@ -11,6 +11,7 @@ module.exports = function(grunt) {
           'build/css/base-styles.css': 'assets/less/base-styles.less',
           'build/css/landing-and-header.css': 'assets/less/landing-and-header.less',
           'build/css/portfolio.css': 'assets/less/portfolio.less',
+          'build/css/portfolio-details.css': 'assets/less/portfolio-details.less',
           'build/css/resume.css': 'assets/less/resume.less',
           'build/css/contact.css': 'assets/less/contact.less'
           //'build/css/animations.css': 'assets/less/animations.less'

@@ -1,4 +1,4 @@
-#landing {
+#landing-container {
   width: 100%;
   transform: translate3d(0, -100%, 0);
   transition-duration: .4s;
@@ -7,6 +7,17 @@
   background: url('../img/oregon.jpg');
   background-size: cover;
   background-position: center;
+  height: 100%;
+}
+#landing-container.window-open {
+  transform: translate3d(0, 0, 0);
+  transition-duration: .4s;
+  transition-timing-function: cubic-bezier(0.85, 0, 0.17, 0.85);
+}
+#landing {
+  max-width: 1365px;
+  margin: 0 auto;
+  z-index: 500;
   height: 100%;
 }
 #landing .paper {
@@ -24,15 +35,6 @@
   color: #00B2A3;
   position: relative;
 }
-#landing .name-box p {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  line-height: .9em;
-}
-#landing .name-box span {
-  font-size: 70px;
-}
 #landing .name-box .align-bottom {
   position: absolute;
   bottom: 0;
@@ -43,11 +45,13 @@
   height: 100%;
 }
 #landing .description-box p#description {
+  font-size: 16px;
   opacity: 0;
   position: absolute;
   bottom: 0;
   font-weight: 300;
   color: white;
+  margin-bottom: 0;
 }
 #landing .description-box p#description span {
   font-size: 24px;
@@ -56,6 +60,7 @@
   bottom: 0;
   right: 0;
   position: absolute;
+  margin-bottom: 0;
   font-family: 'playfair display';
   font-weight: 400;
   font-size: 100px;
@@ -165,17 +170,13 @@
 #landing ul#menu li ul#sub-menu #sub-menu-container li:first-child {
   margin-left: 0;
 }
-#landing.window-open {
-  -webkit-transform: translate3d(0, 0, 0);
-  transition-duration: .4s;
-  transition-timing-function: cubic-bezier(0.85, 0, 0.17, 0.85);
-}
 .icon-container {
   position: fixed;
   top: 4%;
   right: 6.25%;
-  z-index: 500;
+  z-index: 501;
   height: 60px;
+  height: 4.39vw;
   overflow: hidden;
 }
 .icon-container .location-blurb {
@@ -184,14 +185,17 @@
   display: inline-block;
   vertical-align: top;
   margin-right: 16px;
+  margin-right: 1.17vw;
   color: black;
 }
 .icon-container .location-blurb.loc-hide {
   transform: translateX(212px);
+  transform: translateX(15.53vw);
 }
 .icon-container .location-blurb p {
   position: relative;
   font-size: 18px;
+  font-size: 1.32vw;
   font-weight: 300;
   font-style: italic;
   text-align: right;
@@ -199,12 +203,15 @@
 }
 .icon-container .location-blurb p span {
   font-size: 14px;
+  font-size: 1.02vw;
   font-style: normal;
 }
 .menu-icon {
   display: inline-block;
   width: 60px;
   height: 60px;
+  width: 4.39vw;
+  height: 4.39vw;
   overflow: hidden;
   cursor: pointer;
 }
@@ -213,19 +220,25 @@
   position: absolute;
   display: block;
   height: 120px;
+  height: 8.79vw;
   width: 60px;
+  width: 4.39vw;
   background: linear-gradient(30deg, #37b6c4, #40cda3, #37b6c4);
   transition-duration: .18s;
 }
 .menu-icon:hover:before {
   transform: translateY(-60px);
+  transform: translateY(-4.39vw);
 }
 .menu-icon .inner {
   position: relative;
   top: 21px;
+  top: 1.53vw;
   margin: 0 auto;
   width: 24px;
+  width: 1.76vw;
   height: 17px;
+  height: 1.24vw;
   transition: .5s ease;
 }
 .menu-icon .inner span {
@@ -233,6 +246,7 @@
   position: absolute;
   height: 1px;
   width: 24px;
+  width: 1.76vw;
   background: #F4F4F4;
   opacity: 1;
   transition-delay: .3s;
@@ -244,10 +258,12 @@
 }
 .menu-icon .inner span:nth-child(2) {
   top: 8px;
+  top: .58vw;
   transform-origin: left;
 }
 .menu-icon .inner span:nth-child(3) {
   top: 16px;
+  top: 1.17vw;
   transform-origin: left;
 }
 .menu-icon .inner.open {
@@ -255,6 +271,7 @@
 }
 .menu-icon .inner.open span:nth-child(1) {
   width: 28px;
+  width: 2.05vw;
   transform: rotate(35.31deg);
 }
 .menu-icon .inner.open span:nth-child(2) {
@@ -263,5 +280,6 @@
 }
 .menu-icon .inner.open span:nth-child(3) {
   width: 28px;
+  width: 2.05vw;
   transform: rotate(-35.31deg);
 }

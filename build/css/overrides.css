@@ -14,3 +14,19 @@ li {
   margin: 0;
   padding: 0;
 }
+.fp-controlArrow.fp-prev {
+  border-width: 20px 20px 20px 0;
+  border-color: transparent #004c46 transparent transparent;
+}
+.fp-controlArrow.fp-next {
+  border-width: 20px 0 20px 20px;
+  border-color: transparent transparent transparent #004c46;
+}
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background: #004c46;
+}
+#fp-nav ul,
+.fp-slidesNav ul {
+  text-align: center;
+}

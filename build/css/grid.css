@@ -2,6 +2,9 @@
 Grid
 ******************/
 .inner-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   height: 100%;
   padding: 4.16666667%;
 }

@@ -4,44 +4,21 @@
   padding: 6.5% 6.25% 6% 6.25%;
   height: 100%;
 }
-fieldset {
-  border: none;
-}
-textarea,
-input {
-  border: 1px solid #007f74;
-  padding: 12px;
-  margin: 12px 0;
-}
-textarea {
-  font-family: 'Lato', Arial, sans-serif;
-  vertical-align: middle;
-}
-textarea:focus,
-input:focus {
-  border: 1px solid #00B2A3;
-  outline: 1px solid #00e5d2;
-}
-input#name,
-input#email,
-textarea#message {
-  width: 65%;
-}
 @keyframes pulse {
   0% {
-    width: 30px;
-    height: 30px;
-    background-size: 30px 30px;
+    width: 2.12vw;
+    height: 2.12vw;
+    background-size: 2.12vw 2.12vw;
   }
   50% {
     transform: scale(1.4);
     transform-origin: center;
-    margin-left: 12px;
+    margin-left: .88vw;
   }
   100% {
-    width: 30px;
-    height: 30px;
-    background-size: 30px 30px;
+    width: 2.12vw;
+    height: 2.12vw;
+    background-size: 2.12vw 2.12vw;
   }
 }
 .social-links {
@@ -50,12 +27,15 @@ textarea#message {
 .social-links h2 {
   color: #004c46;
   font-family: 'Playfair Display', Arial, sans-serif;
-  margin-bottom: 2em;
+  font-weight: 700;
+  margin-bottom: 1em;
   font-size: 36px;
+  font-size: 2.64vw;
   opacity: 0;
   text-align: right;
   position: relative;
   right: 100px;
+  right: 7.33vw;
   transition-duration: .3s;
   transition-timing-function: cubic-bezier(0.85, 0, 0.45, 1.4);
 }
@@ -68,11 +48,13 @@ textarea#message {
   float: right;
   clear: both;
   margin-bottom: 16px;
+  margin-bottom: 1.17vw;
   position: relative;
   transition-duration: .3s;
 }
 .social-links a.hover:after {
   margin-left: 12px;
+  margin-left: .88vw;
   transform: scale(1.4);
   transform-origin: center;
 }
@@ -84,10 +66,10 @@ textarea#message {
   animation-timing-function: ease-in-out;
   animation-delay: .6s;
 }
-.social-links a.loaded#linkedin-icon:after {
+.social-links a.loaded#github-icon:after {
   animation-delay: 1s;
 }
-.social-links a.loaded#email-icon:after {
+.social-links a.loaded#linkedin-icon:after {
   animation-delay: 1.4s;
 }
 .social-links a:after {
@@ -95,12 +77,46 @@ textarea#message {
   display: inline-block;
   margin-left: 8px;
   width: 30px;
+  width: 2.12vw;
   height: 30px;
+  height: 2.12vw;
   background-repeat: no-repeat;
   position: relative;
   top: 10px;
+  top: .73vw;
   background-size: 30px 30px;
+  background-size: 2.12vw 2.12vw;
   transition-duration: .3s;
+}
+.about-site {
+  height: 100%;
+  border-left: 1px solid white;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(0.85, 0, 0.45, 1.4);
+  position: relative;
+}
+.about-site.active {
+  border-left: 1px solid #00B2A3;
+}
+.about-site .text-group {
+  position: relative;
+  opacity: 0;
+  right: -100px;
+  right: -7.33vw;
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(0.85, 0, 0.45, 1.4);
+}
+.about-site .text-group.active {
+  opacity: 1;
+  right: 0;
+}
+.about-site .text-group h2 {
+  color: #004c46;
+  font-family: 'Playfair Display', Arial, sans-serif;
+  font-weight: 700;
+  margin-bottom: 1.6em;
+  font-size: 36px;
+  font-size: 2.64vw;
 }
 #email-icon:after {
   background-image: url('../img/email-icon.png');
@@ -110,40 +126,4 @@ textarea#message {
 }
 #linkedin-icon:after {
   background-image: url('../img/linkedin-icon.png');
-}
-span.input-validate {
-  display: inline-block;
-  width: 10%;
-  height: 20px;
-}
-span.input-validate .pass,
-span.input-validate .fail {
-  display: block;
-  width: 21px;
-  margin-left: 12px;
-  height: 18px;
-  background-image: url('../img/check-mark.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition-duration: .3s;
-}
-span.input-validate .fail {
-  background-image: url('../img/red-x.png');
-}
-@keyframes buttonin {
-  0% {
-    background-color: blue;
-  }
-  50% {
-    background-color: red;
-  }
-  75% {
-    background-color: black;
-  }
-  100% {
-    background-color: pink;
-  }
-}
-#submit-message {
-  margin-top: 16px;
 }
