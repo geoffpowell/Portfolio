@@ -1,6 +1,5 @@
 $(document).ready(function(){
-
-    //$('.icon-container').hide();
+    $('.icon-container').hide();
     //$('#landing-container').addClass('window-open'); //This is turned off because it's set now in the HTML. Was moved from the bottom of the ready function.
 
      //CREATE HTML MENU FROM EACH DATA-ANCHOR
@@ -26,13 +25,13 @@ $(document).ready(function(){
 
     //resets view of the active state in the menu on anchor click and on fullpage navigation.
     var resetState = function(){
-	  //removes any temp or active classes that may still be present.
-	  $("#polyline4, #polyline5, #polyline6").removeClass('temp-unsticky sticky active');
-	  $("#Resume-link, #Contact-link, #portfolio-link").removeClass('temp-unwhite white');
-	  $("#sub-menu-container").removeClass('open');
-	  $("#sub-menu-container li a").removeClass('white');
-	  portfolioMenuOpen = false;
-	  portfolioActive = false;
+	    //removes any temp or active classes that may still be present.
+	    $("#polyline4, #polyline5, #polyline6").removeClass('temp-unsticky sticky active');
+	    $("#Resume-link, #Contact-link, #portfolio-link").removeClass('temp-unwhite white');
+	    $("#sub-menu-container").removeClass('open');
+	    $("#sub-menu-container li a").removeClass('white');
+	    portfolioMenuOpen = false;
+	    portfolioActive = false;
       contactActive = false;
       resumeActive = false;
 
@@ -59,17 +58,17 @@ $(document).ready(function(){
 	    easingcss3: 'cubic-bezier(0.85, 0, 0.17, 0.85)',
 	    sectionsColor: ['white','white', 'white', 'white', 'white', '#303030', 'white'],
       slidesNavigation: true,
-      controlArrows: false,
+      controlArrows: true,
 	    scrollOverflow: true, //for resumé section
       scrollingSpeed: 700,
 	    //anchors: myAnchors, //using data-anchor attribute on HTML instead.
 	    menu: '#menu',
-      	onLeave: function(origin, destination, direction) {
-          //console.log("ON LEAVE");
-          console.log(origin);
-          //console.log("destination is: " + destination.anchor);
-	        $('.location-blurb').addClass('loc-hide');
-	        var leftSection = $(origin.item);
+      onLeave: function(origin, destination, direction) {
+        console.log("ON LEAVE");
+        console.log(origin);
+        //console.log("destination is: " + destination.anchor);
+        $('.location-blurb').addClass('loc-hide');
+        var leftSection = $(origin.item);
           //the section-slide-1 class either goes on the section tag or the slide tag, depending if the project has slides or not.
 	        //var leftSectionSection = leftSection.find('.section-slide-1');
           //console.log(leftSectionSection);
@@ -80,19 +79,19 @@ $(document).ready(function(){
 	          leftSection.find('.project-image').removeClass('active');
 	        } else if (leftSection.hasClass('resume')) {
 	          //console.log('left resume section');
-              leftSection.find('.paper').removeClass('active');
-	          } else if (leftSection.hasClass('contact')) {
-	            leftSection.find('.social-links h2').removeClass('active');
-              leftSection.find('.social-icon').removeClass('loaded');
-              leftSection.find('.about-site').removeClass('active');
-              leftSection.find('.about-site, .about-site .text-group').removeClass('active');
-	          }
+            leftSection.find('.paper').removeClass('active');
+	        } else if (leftSection.hasClass('contact')) {
+            leftSection.find('.social-links h2').removeClass('active');
+            leftSection.find('.social-icon').removeClass('loaded');
+            leftSection.find('.about-site').removeClass('active');
+            leftSection.find('.about-site, .about-site .text-group').removeClass('active');
+	        }
 	    },
 	    afterLoad: function(origin, destination, direction){
-          //console.log("AFTER LOAD");
-          //console.log("origin is: " + origin.anchor);
-          //console.log("destination is: " + destination.anchor);
-          //console.log("---------------------------------------------");
+        console.log("AFTER LOAD");
+        //console.log("origin is: " + origin.anchor);
+        console.log("destination is: " + destination.anchor);
+        //console.log("---------------------------------------------");
         var loadedSection = $(destination.item);
         var locationBlurb;
         //console.log(loadedSection);
@@ -109,7 +108,7 @@ $(document).ready(function(){
           		$('.location-blurb p').css('color', 'white');
               locationBlurb = 'Resume';
           		loadedSection.find('.paper').addClass('active');
-              console.log(direction);
+              //console.log(direction);
         	} 
         	else if (loadedSection.hasClass('contact')) {
           		//animations
@@ -128,11 +127,11 @@ $(document).ready(function(){
   		},
       afterSlideLoad: function(section, origin, destination, direction){
         var loadedSlide = $(this);
-        console.log(loadedSlide);
-        console.log(section);
-        console.log(origin);
-        console.log(destination);
-        console.log(direction);
+        //console.log(loadedSlide);
+        //console.log(section);
+        //console.log(origin);
+        //console.log(destination);
+        //console.log(direction);
         $(".slide-image-1, .slide-image-2, .slide-image-3, .text-group-appearing").addClass('active');
         $(".text-group, .slide-image-single").addClass('active');
       },
@@ -150,20 +149,20 @@ $(document).ready(function(){
 
     //MENU ICON CLICK FUNCTIONALITY
     $('.menu-icon').click(function(){
-    	//toggle mobile menu icon from closed to open. Menu starts without an open class
+    	
     	$('.menu-icon .inner').toggleClass('open');
       	$('.location-blurb').toggleClass('loc-hide');
     	if (!($('.menu-icon .inner').hasClass('open'))) {
     		$('#landing-container').removeClass('window-open');
     		//$('.location-blurb p').css('display', 'block');
-    		$.fn.fullpage.setAllowScrolling(true, 'all');
-        $.fn.fullpage.setKeyboardScrolling(true, 'all');
+    		fullpage_api.setAllowScrolling(true, 'all');
+        fullpage_api.setKeyboardScrolling(true, 'all');
     		//keyboard scrolling true
     	} else {
     		$('#landing-container').addClass('window-open');
     		//$('.location-blurb p').css('display', 'none');
-        $.fn.fullpage.setAllowScrolling(false, 'all');
-    		$.fn.fullpage.setKeyboardScrolling(false, 'all');
+        fullpage_api.setAllowScrolling(false, 'all');
+    		fullpage_api.setKeyboardScrolling(false, 'all');
     	}
   	});
     // MENU NAVIGATION CLICK IN GENERAL
@@ -177,10 +176,10 @@ $(document).ready(function(){
         //if we've just come into the app:
        	//$("polyline").removeClass('active sticky');
        	$('.icon-container').show();
-    	$.fn.fullpage.silentMoveTo($(this).parent().attr('data-menuanchor'));
+    	fullpage_api.silentMoveTo($(this).parent().attr('data-menuanchor'));
        
-        $.fn.fullpage.setAllowScrolling(true, 'all');
-        $.fn.fullpage.setKeyboardScrolling(true, 'all');
+        fullpage_api.setAllowScrolling(true, 'all');
+        fullpage_api.setKeyboardScrolling(true, 'all');
     	$('#landing-container').removeClass('window-open');
     	$('.menu-icon .inner').removeClass('open');
     	$('.location-blurb p').css('display', 'block');
@@ -319,7 +318,7 @@ $(document).ready(function(){
 
     //GENERAL BUTTON CLICKS AND EVENTS
     $("#explore_slides_1").click(function(){
-      $.fn.fullpage.moveTo("Kattare", 1);
+      fullpage_api.moveTo("Kattare", 1);
     });
 
      //social media icons on contact page
@@ -357,7 +356,7 @@ $(document).ready(function(){
         readableLink = readableLink.replace(':::', '@');
         readableLink = readableLink.replace('last', 'powell');
         return readableLink;
-        console.log('readable link has other');
+        //console.log('readable link has other');
       }
     }
 
@@ -372,11 +371,31 @@ $(document).ready(function(){
       console.log($("#email-icon").attr('href'));
     });
 
-    //SET SCROLL TO FALSE ON READY
-  	//$.fn.fullpage.setAllowScrolling(false, 'all');
-  	//$.fn.fullpage.setKeyboardScrolling(false, 'all');
+    //SET SCROLL TO FALSE ON READY (BECAUSE MENU STARTS OPEN)
+  	fullpage_api.setAllowScrolling(false, 'all');
+  	fullpage_api.setKeyboardScrolling(false, 'all');
 
+    //disable scrolling if app starts too small
+    // if ($(window).width() <= 999) {
+    //   fullpage_api.setAllowScrolling(false, 'all');
+    //   fullpage_api.setKeyboardScrolling(false, 'all');
+    // }
+});
 
+//prevent scroll if message is shown on resize or if menu is open.
+var resizeTimer;
+$(window).resize(function(){
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function(){
+    console.log($(window).width());
+    if ($(window).width() <= 999 || $("#landing-container").hasClass('window-open')) {
+      fullpage_api.setAllowScrolling(false, 'all');
+      fullpage_api.setKeyboardScrolling(false, 'all');
+    } else {
+      fullpage_api.setAllowScrolling(true, 'all');
+      fullpage_api.setKeyboardScrolling(true, 'all');
+    }
+  }, 500);
 });
 
 /////////////////////LANDING PAGE ANIMATIONS AND TIMINGS///////////////////////////////
@@ -450,9 +469,9 @@ $(window).load(function(){
   var polyline2 = lineSVG.select('#polyline2');
   var polyline3 = lineSVG.select("#polyline3");
   //each line time has to be stated explicitly here (time each line takes to animate) 
-  var line1Time = 1200;
-  var line2Time = 1200;
-  var line3Time = 1200;
+  var line1Time = 1100;
+  var line2Time = 1100;
+  var line3Time = 1100;
   var totalLineTime = line1Time + line2Time + line3Time;
 
   function runNameAnimation(){
@@ -526,7 +545,26 @@ $(window).load(function(){
     $("ul#menu").animate({'opacity': 1}, nameTransitionSpeed*3);
     $(".description-box #counter").animate({'opacity': 0}, nameTransitionSpeed);
     $(".description-box #description").animate({'opacity': 1}, nameTransitionSpeed*3);
-  }, percentDoneTimeSegment*numSegments);
 
+    var enterSiteHandler = function(){
+      $("#landing-container").removeClass('window-open');
+      $(".icon-container").show();
+      $('.menu-icon .inner').removeClass('open');
+      $('.location-blurb p').css('display', 'block');
+      $('.location-blurb').removeClass('loc-hide');
+      //remove the event, no longer used
+      $(window).off('wheel mousewheel DOMMouseScroll keydown');
+      setTimeout(function(){
+        fullpage_api.setAllowScrolling(true, 'all');
+        fullpage_api.setKeyboardScrolling(true, 'all');
+      }, 400);
+    }
+    $(window).on('wheel mousewheel DOMMouseScroll', enterSiteHandler);       
+    $(window).keydown(function(e){
+      if (e.which === 40) { //40 is down arrow
+        enterSiteHandler();
+      }
+    });
+  }, percentDoneTimeSegment*numSegments);
 });
 

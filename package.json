@@ -4,11 +4,16 @@
   "description": "portfolio 4th version",
   "main": "index.js",
   "dependencies": {
-    "grunt": "^1.0.1"
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^3.0.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.3.1",
+    "grunt-contrib-htmlmin": "^3.0.0",
     "grunt-contrib-less": "^1.4.0",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.9.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

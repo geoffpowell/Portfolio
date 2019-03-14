@@ -17,6 +17,7 @@ h4 {
 }
 h1 {
   color: #004c46;
+  font-size: 48px;
   font-size: 3.52vw;
 }
 h2 {
@@ -71,7 +72,7 @@ a:hover {
   display: block;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 102%;
   background: linear-gradient(to right, #40cda3, #37b6c4);
   left: -100%;
   top: 0;
@@ -146,4 +147,71 @@ a:hover {
   color: gray;
   opacity: .3;
   background-color: transparent;
+}
+.smallscreen {
+  position: absolute;
+  display: none;
+}
+@media screen and (max-width: 999px) {
+  .smallscreen {
+    color: white;
+    background: black;
+    background: linear-gradient(90deg, #37b6c4, #40cda3);
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    z-index: 1000;
+  }
+  .smallscreen p {
+    box-sizing: border-box;
+    padding: 15% 20%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.33);
+    width: 100%;
+    font-size: 16px;
+  }
+  .smallscreen #left-indicator,
+  .smallscreen #right-indicator {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    width: 7.5vw;
+    height: 7.5vw;
+    max-height: 50px;
+    max-width: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+  }
+  .smallscreen #left-indicator {
+    left: 0%;
+    animation-name: wiggle-left-side;
+    animation-duration: .8s;
+    animation-iteration-count: infinite;
+  }
+  .smallscreen #right-indicator {
+    right: 0%;
+    animation-name: wiggle-right-side;
+    animation-duration: .8s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes wiggle-left-side {
+    0% {
+      left: 1%;
+    }
+    100% {
+      left: 0%;
+    }
+  }
+  @keyframes wiggle-right-side {
+    0% {
+      right: 1%;
+    }
+    100% {
+      right: 0%;
+    }
+  }
 }

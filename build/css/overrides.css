@@ -16,11 +16,11 @@ li {
 }
 .fp-controlArrow.fp-prev {
   border-width: 20px 20px 20px 0;
-  border-color: transparent #004c46 transparent transparent;
+  border-color: transparent #00B2A3 transparent transparent;
 }
 .fp-controlArrow.fp-next {
   border-width: 20px 0 20px 20px;
-  border-color: transparent transparent transparent #004c46;
+  border-color: transparent transparent transparent #00B2A3;
 }
 #fp-nav ul li a span,
 .fp-slidesNav ul li a span {

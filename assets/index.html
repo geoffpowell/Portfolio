@@ -3,53 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!--note write description-->
-  <meta name="description" content="">
-  <!-- note write keywords-->
-  <meta name="keywords" content="">
-  <!-- note Update copyright to be dynamic -->
-  <meta name="author" content=" Geoff Powell, geoffpowell.net, copyright 2017">
+  <meta name="description" content="I'm Geoff Powell, a communicative, self-driven, and creative problem solver with more than 4 years experience designing and developing for the web. I focus on user experience and high quality end products.">
+  <meta name="keywords" content="web, design, corvallis, development, html, css, javascript, jquery">
+  <meta name="author" content=" Geoff Powell, geoffpowell.net, copyright 2018">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0">
-  <!-- note is there a way to make the title dynamic? -->
   <title>Geoff Powell | Designer &amp; Front End Developer</title>
   <!-- note concat and min stylesheets and scripts in grunt when dev is complete -->
-  <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400|Playfair+Display:400,900|Montserrat:400,700" rel="stylesheet">
-  <!-- <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400%7CMontserrat:400,700%7CPlayfair+Display:400,900" rel="stylesheet">  
+  <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/fullpage.css">
-
-  <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/grid.css">
-  <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/overrides.css">
   <link rel="stylesheet" type="text/css" href="css/base-styles.css">
   <link rel="stylesheet" type="text/css" href="css/landing-and-header.css">
   <link rel="stylesheet" type="text/css" href="css/portfolio.css">
   <link rel="stylesheet" type="text/css" href="css/portfolio-details.css">  
   <link rel="stylesheet" type="text/css" href="css/resume.css">
-  <link rel="stylesheet" type="text/css" href="css/contact.css">
+  <link rel="stylesheet" type="text/css" href="css/contact.css"> -->
 
-  <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-
-  <!-- note add analytics -->
+  <link rel="stylesheet" type="text/css" href="css/style.min.css">
   <link rel="shortcut icon" href="favicon32.ico">
+  <!--[if IE]>
+    <script>
+      alert('Your browser is outdated and can't use the latest and greatest web standards. For this reason it may not run this fancy website correctly. For best results, use the latest version of Chrome.');
+    </script>
+  <![endif]-->
+  <script>
+  //  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  //  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  //  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  //  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  //  ga('create', 'UA-52403329-1', 'auto');
+  //  ga('send', 'pageview');
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <!-- <script src="../assets/js/scrolloverflow.js"></script>
-  <script src="js/jquery.fullPage.js"></script> -->
-  <script src="../assets/js/scrolloverflow.js"></script>
-  <script src="js/fullpage.js"></script>
+  <script src="js/scrolloverflow.min.js"></script>
+  <script src="js/fullpage.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"></script> 
- <!--  <script src="../assets/js/menu.js"></script>
- -->  
-  <script src="../assets/js/contact.js"></script>
-  <!-- <script src="../assets/js/test.js"></script> -->
-  <!-- <script src="../assets/js/app2.js"></script> 
-  <script src="../assets/js/app3.js"></script> -->
-  <script type="text/javascript" src="../assets/js/app.js"></script>
-  <!--<script src="../assets/js/fixboxheight.js"></script><-->
-  <!--<script src="../assets/js/menu.js"></script>
-  <script src="../assets/js/landing.js"></script>-->
+  <script src="js/app.min.js"></script>
 </head>
 <body>
+
+  <div class="smallscreen">
+    <img src="img/white-arrow-left.png" alt="expand screen indicator" id="left-indicator">
+    <img src="img/white-arrow-right.png" alt="expand screen indicator" id="right-indicator"> 
+    <p>This site is designed for screens 1000 pixels wide or wider. If you're on a tablet, try turning it to landscape. Otherwise, just maximize the window of your browser. Thanks! A mobile version of this site is on the way :)</p>
+  </div>
 
   <div class="icon-container">
     <div class="location-blurb">
@@ -63,7 +63,7 @@
       </div>
     </div>
   </div>
-  <div id="landing-container">
+  <div id="landing-container" class="window-open" >
     <div id="landing" ><!--class="window-open"-->
       <div class="inner-box">
         <div class="paper">
@@ -522,7 +522,7 @@
             </svg>
           </div>
             <ul id="menu" class="navigation">
-              <li><a id="portfolio-link">Portfolio</a><ul id="sub-menu"><div id="sub-menu-container"></div></ul></li>
+              <li><a id="portfolio-link">Portfolio</a><ul id="sub-menu"><li id="sub-menu-container"></li></ul></li>
             </ul>
         </div>
       </div>
@@ -563,7 +563,7 @@
                 </div>
               </div><!-- ./animation class-->
               <div class="project-image">
-                <img src="../assets/img/imac-kattare.jpg">
+                <img src="img/portfolio-images/imac-kattare.jpg" alt="Kattare project mockup">
               </div>
             </div>
           </div>
@@ -572,13 +572,13 @@
           <div class="inner-box">
             <div class="paper">
               <div class="slide-image-3">
-                <img src="../assets/img/page-1.png" alt="3D presentation of Kattare in browser">
+                <img src="img/portfolio-images/page-1.png" alt="3D presentation of Kattare in browser">
               </div>
               <div class="slide-image-2">
-                <img src="../assets/img/page-2.png" alt="Second 3D presentation of Kattare in browser">
+                <img src="img/portfolio-images/page-2.png" alt="Second 3D presentation of Kattare in browser">
               </div>
               <div class="slide-image-1">
-                <img src="../assets/img/page-3.png" alt="Third 3D presentation of Kattare in browser">
+                <img src="img/portfolio-images/page-3.png" alt="Third 3D presentation of Kattare in browser">
               </div>
               <div class="text-group-appearing">
                 <h2>Website Redesign</h2>
@@ -599,7 +599,7 @@
                 </p>
               </div>
               <div class="slide-image-single long-narrow">
-                <img src="../assets/img/service-icons.jpg" alt="Service Icons for Kattare">
+                <img src="img/portfolio-images/service-icons.jpg" alt="Service Icons for Kattare">
               </div>
             </div>
           </div>
@@ -608,7 +608,7 @@
           <div class="inner-box">
             <div class="paper">
               <div class="slide-image-single">
-                <img src="../assets/img/sign-up-page.png" alt="3d presentation of Kattare's sign up page">
+                <img src="img/portfolio-images/sign-up-page.png" alt="3d presentation of Kattare's sign up page">
               </div>
               <div class="text-group-static" style="top: 25%;">
                 <h2>Custom Sign Up Form</h2>
@@ -624,7 +624,7 @@
           <div class="inner-box">
             <div class="paper">
               <div class="slide-image-single">
-                <img src="../assets/img/brochures.png" alt="Brochures for Kattare's Business Package">
+                <img src="img/portfolio-images/brochures.png" alt="Brochures for Kattare's Business Package">
               </div>
               <div class="text-group-static" style="top: 30%; right: 12%;">
                 <h2>Business Package Brochures</h2>
@@ -664,7 +664,7 @@
             </div><!-- ./animation class-->
 
             <div class="project-image">
-              <img src="../assets/img/imac-cff.jpg">
+              <img src="img/portfolio-images/imac-cff.jpg" alt="fall festival project mockup">
             </div>
           </section>
         </div> 
@@ -699,7 +699,7 @@
             </div>
           </div><!-- ./animation class-->
           <div class="project-image">
-            <img src="../assets/img/imac-gloves.jpg">
+            <img src="img/portfolio-images/imac-gloves.jpg" alt="gloves by bruno project mockup">
           </div>
           </section>
         </div>
@@ -732,7 +732,7 @@
               </div>
             </div><!-- ./animation class-->
             <div class="project-image">
-              <img src="../assets/img/imac-pedalpushers.jpg">
+              <img src="img/portfolio-images/imac-pedalpushers.jpg" alt="pedal pushers project mockup">
             </div>
           </section>
         </div><!-- /.paper -->
@@ -765,7 +765,7 @@
               </div>
             </div><!-- ./animation class-->
             <div class="project-image">
-              <img src="../assets/img/imac-woodcraft.jpg">
+              <img src="img/portfolio-images/imac-woodcraft.jpg" alt="wood craft project mockup">
             </div>
           </section>
         </div><!-- /.paper -->
@@ -782,7 +782,7 @@
               </div>
               <div class="col-16 col-off-left-1">
                 <p> 
-                Creative problem solver focused on designing and developing for the web. Among my top priorities are site usability, positive user experience, simple aesthetics, and clean, documented code. With outstanding communication skills and self-motivation I work efficiently both in teams and alone to produce high quality visual and interactive products.</p>
+                Creative and methodical problem solver focused on designing and developing for the web. Among my top priorities are site usability, positive user experience, happy clients, and clean, documented code. With outstanding communication skills and self-motivation I work efficiently both in teams and alone to produce high quality visual and interactive products.</p>
               </div>
             </div><!-- end statement -->
             <div class="onerow experience">
@@ -886,34 +886,9 @@
               <div class="col-14 col-off-left-2 about-site">
                 <div class="col-off-left-2 text-group">
                   <h2>Site Info</h2>
-                  <p>Thanks for visiting my portfolio and checking out my work! I created this site in the SPA style with the help of <a href="https://alvarotrigo.com/fullPage/" target="_blank">Fullpage.js</a>. SVG animations on the loading screen are handled by <a href="http://snapsvg.io/" target="_blank">Snap.svg</a> and I used jQuery for DOM manipulation. I wrote CSS with Less and compiled with Grunt. Transition animations and everything else were custom&ndash;made by yours truly. No databases or content management systems were harmed in the making of this website. If you want more technical details on this site's construction, you can find them on <a href="https://github.com/geoffpowell/Portfolio" target="_blank">GitHub</a>.</p>
+                  <p>Thanks for visiting my portfolio and checking out my work! I created this site in the SPA style with the help of <a href="https://alvarotrigo.com/fullPage/" target="_blank">Fullpage.js</a>. SVG animations on the loading screen are handled by <a href="http://snapsvg.io/" target="_blank">Snap.svg</a> and I used jQuery for DOM manipulation. I wrote CSS with Less and compiled with Grunt. Transition animations and everything else were custom&ndash;made by yours truly. No databases or content management systems were harmed in the making of this website. If you want more technical details on this site's construction, you can find the code on <a href="https://github.com/geoffpowell/Portfolio" target="_blank">GitHub</a>.</p>
                 </div>
                 <p></p>
-                <!-- <form method="post" action="contact.php" name="contact_form">
-                  <fieldset>
-                    <div class="onerow form-spacer">
-                      <label for="name" class="col3">Name:</label>
-                      <div class="col9 last">
-                        <input type="text" name="name" id="name" maxlength="50"><span class="input-validate"><span id="validate_name" class=""></span></span>
-                      </div>
-                    </div>
-                    <div class="onerow form-spacer">
-                      <label for="email" class="col3">Email:</label>
-                      <div class="col9 last">
-                        <input maxlength="50" type="text" name="email" id="email"><span class="input-validate"><span id="validate_email" class=""></span></span>
-                      </div>
-                    </div>
-                    <div class="onerow form-spacer">
-                      <label for="message" class="col3">Message:</label>
-                        <div class="col9 last">
-                          <textarea class="col9 last" name="message" id="message"></textarea><span class="input-validate"><span id="validate_message" class=""></span></span>
-                        </div>
-                    </div>
-                    <div class="onerow form-spacer" style="overflow:visible">
-                      <button class="btn btn-animate-in disabled" id="submit-message" type="submit" form="" disabled value="Send Message">Send Message</button>
-                    </div>
-                  </fieldset>
-                </form> -->
               </div>
             </div>
           </section>
